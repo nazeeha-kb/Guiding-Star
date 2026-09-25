@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import React, { useState } from "react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 interface TestimonialItem {
   id: number;
@@ -16,51 +16,105 @@ export const Testimonials: React.FC = () => {
     {
       id: 1,
       quote:
-        'I stopped apologizing for wanting more. That alone changed everything else. For years I thought being agreeable was the same as being strong. Aliya helped me see that silence was costing me my self-respect.',
-      author: 'R. M.',
-      context: 'Senior Strategy Consultant · Mumbai',
-      category: 'Career & Self-Advocacy',
+        "I came to this workshop expecting a checklist for marriage. I left with a mirror. I learned to pause instead of react, to choose connection over correction. This wasn't pre-marriage counseling — it was pre-life counseling.",
+      author: "Rumaisa Nazir",
+      context: "Pre-Marital Coaching Participant",
+      category: "Relationships & Self-Awareness",
     },
     {
       id: 2,
       quote:
-        'For the first time in twenty years, I sat with someone who didn’t tell me to simply endure. She showed me how to make decisions without trembling, and how to hold my ground in family conversations without guilt.',
-      author: 'S. K.',
-      context: 'Educator & Parent · Dubai',
-      category: 'Transitions & Boundaries',
+        "I'm feeling really great, happy, and having fun in life. Even my health improved within days. Your words when we spoke made me really change my way — it was deep and impactful, though it hurt me at first to hear.",
+      author: "Zohra Altaf",
+      context: "Mississauga, Ontario · 1:1 Coaching",
+      category: "Emotional Wellbeing",
     },
     {
       id: 3,
       quote:
-        'The shift wasn’t loud. It was this quiet, grounded realization that I didn’t have to carry everyone’s expectations at the cost of my own health. She understands professional pressure as deeply as she understands human doubt.',
-      author: 'A. H.',
-      context: 'Finance Director · London',
-      category: 'Leadership & Work-Life Balance',
+        "Your polite nature, and the way you coordinated with different professionals to guide us through health and wellbeing during Ramzan — I'm 60 plus, and this still reached me. May Allah reward all of you.",
+      author: "Rehana Khan",
+      context: "Pune · Ramadan Wellness Blueprint",
+      category: "Wellness & Life Stage Coaching",
     },
     {
       id: 4,
       quote:
-        'When our daughter was completely overwhelmed by university choices and paralyzed by fear of making the wrong choice, Aliya’s mentoring brought immediate calm and structure. She helped her discover what she actually cared about.',
-      author: 'T. & F. N.',
-      context: 'Parents of High School Senior · Abu Dhabi',
-      category: 'Youth & Academic Mentoring',
+        "I am so grateful for the Ramadan Wellness Blueprint session. It was exactly what I needed — your guidance on balancing spiritual and physical wellness was completely on point.",
+      author: "Farzana Khan",
+      context: "Ramadan Wellness Blueprint 2026",
+      category: "Wellness & Balance",
+    },
+    {
+      id: 5,
+      quote:
+        "I would like to sincerely thank you for such a meaningful and insightful session. The way you explained how our intentions and consistency shape everything we do was especially inspiring.",
+      author: "Fazzilat Shah",
+      context: "Workshop Participant",
+      category: "Mindset & Intention",
+    },
+    {
+      id: 6,
+      quote:
+        "It was really nice talking to you. What you are doing is so appreciated — it will help many people. Talking to you, I felt genuinely happy and good afterward.",
+      author: "Farida Doctor",
+      context: "Career Coaching Session",
+      category: "Career Clarity",
+    },
+    {
+      id: 7,
+      quote:
+        "You cleared all my doubts like a friend, and I understood your way of explaining things so well. What stood out most is that you truly understand what young people are going through.",
+      author: "Arisha Fatima",
+      context: "Youth Mentoring Session",
+      category: "Confidence & Direction",
+    },
+    {
+      id: 8,
+      quote:
+        "I learnt so much about emotional patterns, communication, compatibility, and breaking unrealistic expectations. It gave me real direction and self-awareness I didn't have before.",
+      author: "Anonymous",
+      context: "Pre-Marital Workshop Participant",
+      category: "Relationships & Communication",
+    },
+    {
+      id: 9,
+      quote:
+        "She was the one who helped me get out of the trauma I was in. She's empathetic enough to truly understand what you're going through. By the grace of God, I started healing within weeks.",
+      author: "Anonymous",
+      context: "Instagram Community Member",
+      category: "Healing & Emotional Recovery",
+    },
+    {
+      id: 10,
+      quote:
+        "After a lot of apprehension, I finally gathered the courage to reach out — and you are truly a blessing. Your words are like an invisible hug that made me feel like someone finally has my back.",
+      author: "Anonymous",
+      context: "Private Coaching Client",
+      category: "Emotional Support",
     },
   ];
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1,
+    );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === testimonials.length - 1 ? 0 : prev + 1,
+    );
   };
 
   const current = testimonials[currentIndex];
 
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-white border-b border-[#DCE9EB]">
+    <section
+      id="testimonials"
+      className="py-20 md:py-28 bg-white border-b border-[#DCE9EB]"
+    >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
-        
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-18 pb-6 border-b border-[#DCE9EB]">
           <div className="max-w-xl">
@@ -73,13 +127,13 @@ export const Testimonials: React.FC = () => {
           </div>
 
           <p className="text-xs sm:text-sm text-[#607277] max-w-sm font-normal leading-relaxed">
-            Shared with permission. Client names are initialed to maintain strict personal and professional confidentiality.
+            Shared with permission. Client names are initialed to maintain
+            strict personal and professional confidentiality.
           </p>
         </div>
 
         {/* Horizontal Editorial Carousel Container */}
         <div className="border border-[#DCE9EB] bg-[#EEF6F7]/50 p-8 sm:p-12 md:p-16 relative">
-          
           {/* Subtle Decorative Quote Icon */}
           <div className="mb-6 sm:mb-8 text-[#5797A6]/30">
             <Quote className="w-10 h-10 sm:w-12 sm:h-12" />
@@ -94,7 +148,6 @@ export const Testimonials: React.FC = () => {
 
           {/* Client Details & Controls Strip */}
           <div className="pt-6 border-t border-[#DCE9EB] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            
             {/* Author Attribution */}
             <div>
               <div className="flex items-center gap-3 mb-1">
@@ -105,17 +158,16 @@ export const Testimonials: React.FC = () => {
                   {current.category}
                 </span>
               </div>
-              <p className="text-xs text-[#607277]">
-                {current.context}
-              </p>
+              <p className="text-xs text-[#607277]">{current.context}</p>
             </div>
 
             {/* Navigation Controls & Slide Index */}
             <div className="flex items-center gap-4 shrink-0">
-              
               {/* Subtle Slide Indicator */}
               <div className="text-xs font-mono text-[#607277] select-none tracking-wider">
-                <span className="font-medium text-[#183238]">0{currentIndex + 1}</span>
+                <span className="font-medium text-[#183238]">
+                  0{currentIndex + 1}
+                </span>
                 <span className="mx-1 text-[#DCE9EB]">/</span>
                 <span>0{testimonials.length}</span>
               </div>
@@ -137,9 +189,7 @@ export const Testimonials: React.FC = () => {
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
-
             </div>
-
           </div>
 
           {/* Slide Indicator Bar at bottom of card */}
@@ -151,13 +201,13 @@ export const Testimonials: React.FC = () => {
               }}
             />
           </div>
-
         </div>
 
         {/* Ethical Confidentiality Notice */}
         <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#607277]">
           <p>
-            Coaching sessions are 1-on-1 and strictly confidential. References are available upon mutual agreement.
+            Coaching sessions are 1-on-1 and strictly confidential. References
+            are available upon mutual agreement.
           </p>
           <a
             href="#contact"
@@ -167,7 +217,6 @@ export const Testimonials: React.FC = () => {
             <span>&rarr;</span>
           </a>
         </div>
-
       </div>
     </section>
   );

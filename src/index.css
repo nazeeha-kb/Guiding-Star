@@ -1,43 +1,73 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #1a2e33;
+  --color-slate: #5a6e73;
+  --color-teal: #5797a6;
+  --color-teal-deep: #3d7a88;
+  --color-paper: #f6f4f0;
+  --color-mist: #e4eef0;
+  --color-line: #c5d8dc;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+}
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #183238;
-    background-color: #FFFFFF;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+    font-size: 1.125rem;
+    line-height: 1.65;
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    color: #183238;
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
   }
 }
 
-.font-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-teal);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.95rem 1.4rem;
+  border-radius: 2px;
+  transition: background-color 0.15s ease;
 }
 
-.font-sans {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+.btn-cta:hover {
+  background-color: var(--color-teal-deep);
 }
 
-/* Palette utility classes */
-.text-dark {
-  color: #183238;
+.btn-cta:active {
+  background-color: #346878;
 }
 
-.text-secondary {
-  color: #607277;
+@media (prefers-reduced-motion: no-preference) {
+  .hero-settle {
+    animation: hero-settle 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 }
 
-.text-teal {
-  color: #5797A6;
-}
-
-.bg-soft {
-  background-color: #EEF6F7;
-}
-
-.border-line {
-  border-color: #DCE9EB;
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

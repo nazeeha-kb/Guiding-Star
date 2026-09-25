@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React from "react";
 
 interface OfferingsProps {
   onOpenBooking: () => void;
@@ -8,117 +7,74 @@ interface OfferingsProps {
 export const Offerings: React.FC<OfferingsProps> = ({ onOpenBooking }) => {
   const focusAreas = [
     {
-      number: '01',
-      title: 'Emotional Wellbeing',
-      subtitle: 'Awareness & Stability',
+      title: "Emotional wellbeing",
       description:
-        'Understanding your emotions, patterns and responses so you can navigate life with greater awareness, resilience and stability.',
+        "Make sense of what you feel — anxiety, numbness, or a quiet unrest you cannot yet name — and learn to respond with more choice instead of the same well-worn reaction.",
     },
     {
-      number: '02',
-      title: 'Career & Life Direction',
-      subtitle: 'Clarity on Next Steps',
+      title: "Career and life direction",
       description:
-        'For moments when you’re reconsidering your work, identity, goals or next chapter — making sense of what aligns with where you are now.',
+        "Find perspective when work, ambition, or identity is changing, so the next step is a decision you can stand behind rather than a guess made under pressure.",
     },
     {
-      number: '03',
-      title: 'Relationships & Communication',
-      subtitle: 'Boundaries & Honest Dialogue',
+      title: "Relationships and communication",
       description:
-        'Developing healthier communication, personal boundaries and emotional awareness in partnerships, family, and professional relationships.',
+        "Build clearer boundaries and have the conversations that matter, whether you are navigating marriage, family, or the patterns that keep repeating between you and the people you love.",
     },
     {
-      number: '04',
-      title: 'Leadership & People Development',
-      subtitle: 'Executive & Team Impact',
+      title: "Leadership and people development",
       description:
-        'Building self-confidence, emotional intelligence and leadership capability for professional growth and workplace challenges.',
+        "Strengthen confidence, emotional intelligence, and professional impact when the role asks more of you than a title can carry on its own.",
     },
   ];
 
   return (
-    <section id="offerings" className="py-20 md:py-28 bg-[#EEF6F7] border-b border-[#DCE9EB]">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#DCE9EB]">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold tracking-widest text-[#5797A6] uppercase mb-2">
-              Practice Focus
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-[#183238] leading-tight">
-              What we can work on
-            </h2>
-          </div>
-          <p className="text-sm text-[#607277] max-w-md font-normal leading-relaxed">
-            Coaching offers a confidential, structured space to examine where you are, gain objective perspective, and decide deliberate steps forward.
-          </p>
-        </div>
+    <section id="offerings" className="bg-white md:bg-paper px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-[1100px]">
+        <h2 className="font-serif text-4xl font-normal leading-[1.05] text-ink md:text-5xl">
+          What we can work on
+        </h2>
+        <p className="mt-4 max-w-[42ch] text-lg leading-[1.65] text-slate">
+          Coaching with Aliya is a focused, confidential conversation:
+          understand what is happening, then decide what to do next.
+        </p>
 
-        {/* Editorial Numbered Rows */}
-        <div className="divide-y divide-[#DCE9EB] border-b border-[#DCE9EB] mb-16">
-          {focusAreas.map((item) => (
-            <div
-              key={item.number}
-              className="py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline group"
+        <ul className="mt-14 md:mt-16">
+          {focusAreas.map((item, idx) => (
+            <li
+              key={item.title}
+              className={`group grid gap-4 border-t border-line py-10 transition-colors md:grid-cols-12 md:gap-10 md:py-12 ${
+                idx === focusAreas.length - 1 ? "border-b" : ""
+              }`}
             >
-              {/* Oversized Number */}
-              <div className="md:col-span-2">
-                <span className="font-serif text-3xl sm:text-4xl text-[#5797A6] font-normal">
-                  {item.number}
-                </span>
-              </div>
-
-              {/* Title & Subtitle */}
               <div className="md:col-span-4">
-                <h3 className="text-2xl font-serif text-[#183238] font-normal mb-1">
+                {/* Short accent rule — echoes the vertical rule used in About */}
+                <span className="mb-4 block h-px w-8 bg-[#5797A6] transition-[width] duration-300 group-hover:w-14" />
+                <h3 className="font-serif text-[1.85rem] font-normal leading-[1.15] text-ink md:text-[2rem]">
                   {item.title}
                 </h3>
-                <span className="text-xs font-semibold text-[#607277] uppercase tracking-wider">
-                  {item.subtitle}
-                </span>
               </div>
-
-              {/* Description & Action */}
-              <div className="md:col-span-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <p className="text-sm text-[#607277] leading-relaxed max-w-lg font-normal">
-                  {item.description}
-                </p>
-                <button
-                  onClick={onOpenBooking}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#183238] hover:text-[#5797A6] transition-colors shrink-0 group-hover:translate-x-0.5 duration-150"
-                >
-                  <span>Inquire</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
+              <p className="max-w-[48ch] text-lg leading-[1.65] text-slate md:col-span-8">
+                {item.description}
+              </p>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Editorial Section for Students & Young Adults */}
-        <div className="bg-white border border-[#DCE9EB] p-8 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#5797A6] block mb-1">
-              Mentoring &amp; Career Guidance
-            </span>
-            <h3 className="text-2xl font-serif text-[#183238] font-normal mb-2">
-              For students and young adults
-            </h3>
-            <p className="text-sm text-[#607277] leading-relaxed">
-              Career guidance, 1-on-1 mentoring, and psychometric assessments to help students and early-career professionals make informed, grounded decisions about educational pathways and next steps.
-            </p>
-          </div>
-
+        <div className="mt-16 flex flex-col gap-6 border-t border-line pt-10 sm:flex-row sm:items-end sm:justify-between">
+          <p className="max-w-[44ch] text-base leading-[1.65] text-slate">
+            She also offers career guidance and mentoring for students and
+            young adults facing educational choices, adjustment, and early
+            professional decisions.
+          </p>
           <button
+            type="button"
             onClick={onOpenBooking}
-            className="px-5 py-3 text-xs font-medium text-white bg-[#183238] hover:bg-[#2C3E45] rounded-[4px] transition-colors whitespace-nowrap shrink-0"
+            className="btn-cta shrink-0 self-start sm:self-auto"
           >
-            Inquire for Youth Mentoring
+            Book a Discovery Call
           </button>
         </div>
-
       </div>
     </section>
   );

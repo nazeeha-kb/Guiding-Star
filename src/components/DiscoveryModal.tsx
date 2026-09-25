@@ -1,131 +1,201 @@
-import React, { useState } from 'react';
-import { X, Check } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { X } from "lucide-react";
+import { AgreementConsent } from "./AgreementConsent.tsx";
 
 interface DiscoveryModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+// Replace with the real business number, digits only, country code first, no + or spaces.
+const WHATSAPP_NUMBER = "971500000000";
+
+const topics = [
+  { id: "emotional", label: "Emotional wellbeing" },
+  { id: "career", label: "Career and direction" },
+  { id: "relationships", label: "Relationships" },
+  { id: "leadership", label: "Leadership" },
+  { id: "student", label: "Student mentoring" },
+];
+
+function buildWhatsAppUrl(params: {
+  name: string;
+  email: string;
+  topic: string;
+  timeZone: string;
+}) {
+  const topicLabel = topics.find((t) => t.id === params.topic)?.label ?? params.topic;
+
+  const message = [
+    `Hi Aliya, I'd like to book a Discovery Call.`,
+    ``,
+    `Name: ${params.name}`,
+    `Email: ${params.email}`,
+    `Focus area: ${topicLabel}`,
+    `Timezone: ${params.timeZone}`,
+  ].join("\n");
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose }) => {
-  const [selectedTopic, setSelectedTopic] = useState('emotional');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [timeZone, setTimeZone] = useState('GST');
+  const [selectedTopic, setSelectedTopic] = useState("emotional");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [timeZone, setTimeZone] = useState("GST");
   const [booked, setBooked] = useState(false);
+  const [agreed, setAgreed] = useState(false);
+
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
+      requestAnimationFrame(() => {
+        firstFieldRef.current?.focus();
+      });
+    } else {
+      triggerRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setBooked(false);
+      setAgreed(false);
+      setName("");
+      setEmail("");
+      setSelectedTopic("emotional");
+      setTimeZone("GST");
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const topics = [
-    { id: 'emotional', label: 'Emotional Wellbeing' },
-    { id: 'career', label: 'Career & Life Direction' },
-    { id: 'relationships', label: 'Relationships & Communication' },
-    { id: 'leadership', label: 'Leadership & People Development' },
-    { id: 'student', label: 'Student / Youth Guidance' },
-  ];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email) return;
+    if (!name || !email || !agreed) return;
+
+    const url = buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone });
+    window.open(url, "_blank", "noopener,noreferrer");
+
     setBooked(true);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-150">
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 p-0 sm:items-center sm:p-4"
+      onClick={onClose}
+    >
       <div
-        className="bg-white border border-[#DCE9EB] max-w-lg w-full p-6 sm:p-8 shadow-xl relative max-h-[92vh] overflow-y-auto rounded-[6px]"
+        ref={dialogRef}
+        onClick={(e) => e.stopPropagation()}
+        className="relative flex max-h-[92vh] w-full max-w-lg flex-col border-t-[5px] border-teal bg-paper sm:border sm:border-line sm:border-t-[5px]"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="discovery-title"
       >
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 text-[#607277] hover:text-[#183238] transition-colors"
-          aria-label="Close dialog"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        <div className="flex shrink-0 items-start justify-between px-6 pt-6 sm:px-8 sm:pt-8">
+          <h3 id="discovery-title" className="font-serif text-3xl font-normal text-ink">
+            {booked ? "Almost there." : "Book a Discovery Call"}
+          </h3>
+          <button
+            type="button"
+            onClick={onClose}
+            className="-mr-1.5 -mt-1.5 shrink-0 p-1.5 text-slate hover:text-ink"
+            aria-label="Close"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
 
-        {booked ? (
-          <div className="text-left py-4">
-            <div className="w-10 h-10 bg-[#EEF6F7] text-[#5797A6] flex items-center justify-center mb-4 rounded-[4px]">
-              <Check className="w-5 h-5" />
-            </div>
-            <h3 className="text-2xl font-serif font-normal text-[#183238] mb-2">
-              Discovery Call Requested
-            </h3>
-            <p className="text-sm text-[#607277] leading-relaxed mb-6">
-              Thank you, {name}. Aliya will personally review your note and email you at <span className="font-semibold text-[#183238]">{email}</span> with proposed timeslots for your timezone ({timeZone}).
-            </p>
-            <div className="p-4 bg-[#EEF6F7] border border-[#DCE9EB] text-xs text-[#607277] space-y-1.5 mb-6">
-              <p className="font-semibold text-[#183238]">What to expect in 20 minutes:</p>
-              <p>• Focused conversation on where you are and what feels ready for change</p>
-              <p>• Mutual assessment of whether coaching is the appropriate next step</p>
-              <p>• Confidential 1-on-1 dialogue with zero sales pressure</p>
-            </div>
-            <button
-              onClick={() => {
-                setBooked(false);
-                onClose();
-              }}
-              className="px-5 py-2.5 text-xs font-medium text-white bg-[#5797A6] hover:bg-[#467d8a] rounded-[4px] transition-colors"
-            >
-              Close Window
-            </button>
-          </div>
-        ) : (
-          <div>
-            <div className="mb-6">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-[#5797A6] block mb-1">
-                Introductory Session
-              </span>
-              <h3 className="text-2xl font-serif text-[#183238] font-normal">
-                Book a 20-Minute Discovery Call
-              </h3>
-              <p className="text-xs text-[#607277] mt-1 leading-relaxed">
-                A structured, confidential dialogue to clarify where you are and determine whether coaching together is the right fit.
+        <div className="overflow-y-auto px-6 pb-6 pt-2 sm:px-8 sm:pb-8">
+          {booked ? (
+            <>
+              <p className="mt-2 max-w-[40ch] text-base leading-[1.65] text-slate">
+                A WhatsApp message has opened in a new tab, pre-filled with your
+                details. Just hit send — Aliya will reply directly to confirm a
+                time that works for {timeZone}.
               </p>
-            </div>
+              <p className="mt-4 max-w-[40ch] text-sm leading-[1.6] text-slate">
+                Didn't see the tab open?{" "}
+                <a
+                  href={buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal underline underline-offset-2 hover:text-[#3D7A88]"
+                >
+                  Open WhatsApp manually
+                </a>
+                .
+              </p>
+              <button type="button" onClick={onClose} className="btn-cta mt-8">
+                Close
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="mt-2 max-w-[40ch] text-base leading-[1.65] text-slate">
+                Twenty minutes. Confidential. No pressure to continue. Submitting
+                opens WhatsApp with your details pre-filled — you send the message
+                yourself.
+              </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-[11px] font-semibold text-[#183238] uppercase tracking-wider mb-2">
-                  Primary Area of Focus
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {topics.map((t) => (
-                    <button
-                      key={t.id}
-                      type="button"
-                      onClick={() => setSelectedTopic(t.id)}
-                      className={`text-left p-2.5 text-xs rounded-[4px] transition-colors border ${
-                        selectedTopic === t.id
-                          ? 'border-[#5797A6] bg-[#EEF6F7] text-[#183238] font-medium'
-                          : 'border-[#DCE9EB] hover:border-[#5797A6] text-[#607277]'
-                      }`}
-                    >
-                      {t.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+                <fieldset>
+                  <legend className="mb-2 text-sm text-ink">What you want to focus on</legend>
+                  <div className="flex flex-col gap-2">
+                    {topics.map((t) => (
+                      <label key={t.id} className="flex cursor-pointer items-center gap-2 text-base text-slate">
+                        <input
+                          type="radio"
+                          name="topic"
+                          checked={selectedTopic === t.id}
+                          onChange={() => setSelectedTopic(t.id)}
+                          className="accent-teal"
+                        />
+                        {t.label}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="modal-name" className="block text-[11px] font-semibold text-[#183238] mb-1">
-                    Your Name *
+                  <label htmlFor="modal-name" className="mb-1.5 block text-sm text-ink">
+                    Name
                   </label>
                   <input
+                    ref={firstFieldRef}
                     id="modal-name"
                     type="text"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Full name"
-                    className="w-full px-3 py-2 border border-[#DCE9EB] text-xs text-[#183238] focus:border-[#5797A6] focus:outline-hidden rounded-[4px]"
+                    className="w-full border border-line bg-paper px-3.5 py-2.5 text-base text-ink focus:border-teal focus:outline-hidden"
                   />
                 </div>
                 <div>
-                  <label htmlFor="modal-email" className="block text-[11px] font-semibold text-[#183238] mb-1">
-                    Email *
+                  <label htmlFor="modal-email" className="mb-1.5 block text-sm text-ink">
+                    Email
                   </label>
                   <input
                     id="modal-email"
@@ -133,44 +203,40 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="w-full px-3 py-2 border border-[#DCE9EB] text-xs text-[#183238] focus:border-[#5797A6] focus:outline-hidden rounded-[4px]"
+                    className="w-full border border-line bg-paper px-3.5 py-2.5 text-base text-ink focus:border-teal focus:outline-hidden"
                   />
                 </div>
-              </div>
+                <div>
+                  <label htmlFor="modal-tz" className="mb-1.5 block text-sm text-ink">
+                    Timezone
+                  </label>
+                  <select
+                    id="modal-tz"
+                    value={timeZone}
+                    onChange={(e) => setTimeZone(e.target.value)}
+                    className="w-full border border-line bg-paper px-3.5 py-2.5 text-base text-ink focus:border-teal focus:outline-hidden"
+                  >
+                    <option value="GST">GST — Dubai</option>
+                    <option value="IST">IST — India</option>
+                    <option value="GMT">GMT / BST — UK</option>
+                    <option value="EST">EST — USA</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
 
-              <div>
-                <label htmlFor="modal-tz" className="block text-[11px] font-semibold text-[#183238] mb-1">
-                  Your Timezone
-                </label>
-                <select
-                  id="modal-tz"
-                  value={timeZone}
-                  onChange={(e) => setTimeZone(e.target.value)}
-                  className="w-full px-3 py-2 border border-[#DCE9EB] text-xs text-[#183238] focus:border-[#5797A6] focus:outline-hidden rounded-[4px] bg-white"
-                >
-                  <option value="GST">GST — Gulf Standard Time (Dubai)</option>
-                  <option value="IST">IST — India Standard Time</option>
-                  <option value="GMT">GMT / BST — United Kingdom</option>
-                  <option value="EST">EST — Eastern Time (USA)</option>
-                  <option value="Other">Other / Global International</option>
-                </select>
-              </div>
+                <AgreementConsent checked={agreed} onChange={setAgreed} />
 
-              <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 text-xs font-medium text-white bg-[#5797A6] hover:bg-[#467d8a] rounded-[4px] transition-colors"
+                  disabled={!agreed}
+                  className="btn-cta w-full disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
                 >
-                  Confirm Discovery Call Request
+                  Continue to WhatsApp
                 </button>
-                <p className="text-center text-[11px] text-[#607277] mt-2">
-                  Confidential 1-on-1 sessions. No diagnosis or clinical treatment.
-                </p>
-              </div>
-            </form>
-          </div>
-        )}
+              </form>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

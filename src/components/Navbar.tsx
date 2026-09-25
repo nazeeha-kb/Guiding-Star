@@ -1,177 +1,138 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import { Logo } from './Logo';
+import React, { useState, useEffect, useRef } from "react";
+import { Menu, X } from "lucide-react";
+import { Logo } from "./Logo";
 
 interface NavbarProps {
   onOpenBooking: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setMobileMenuOpen(false);
-      }
-    };
-
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMobileMenuOpen(false);
-      }
+      if (event.key === "Escape") setMobileMenuOpen(false);
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    const THRESHOLD = 48;
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > THRESHOLD);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'What We Work On', href: '#offerings' },
-    { label: 'Who I Work With', href: '#who-i-work-with' },
-    { label: 'Credentials', href: '#credentials' },
-    { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Contact', href: '#contact' },
+    { label: "Offerings", href: "#offerings" },
+    { label: "About", href: "#about" },
+    { label: "Voices", href: "#testimonials" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-          isScrolled || mobileMenuOpen
-            ? 'bg-white shadow-xs border-b border-[#DCE9EB] py-3.5'
-            : 'bg-white/90 backdrop-blur-xs border-b border-[#DCE9EB]/60 py-4 md:py-5'
+        className={`sticky top-0 z-50 border-b transition-[background-color,backdrop-filter,border-color] duration-300 ease-out motion-reduce:transition-none ${
+          scrolled
+            ? "border-line/70 bg-paper/95 backdrop-blur-[2px]"
+            : "border-transparent bg-paper/35 backdrop-blur-[1px]"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10 flex items-center justify-between gap-4">
-          
-          {/* Brand Wordmark */}
-          <a
-            href="#"
-            className="group flex items-center gap-3 min-w-0"
-          >
-            <Logo
-              className="w-7 h-7 sm:w-8 sm:h-8 transition-opacity duration-200 group-hover:opacity-85 shrink-0"
-              size={30}
-            />
-            <div className="flex flex-col text-left min-w-0">
-              <span className="font-serif font-normal text-xl sm:text-2xl text-[#183238] tracking-tight leading-none">
-                Guiding Star
-              </span>
-              <span className="text-[10px] tracking-widest uppercase font-sans text-[#5797A6] font-medium mt-1">
-                Coaching &amp; People Development
-              </span>
-            </div>
+        <div className="mx-auto flex max-w-[1100px] items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+          <a href="#hero-section" className="flex min-w-0 items-center gap-2.5">
+            <Logo className="h-7 w-7 shrink-0" size={28} />
+            <span className="font-serif text-[1.35rem] leading-none text-ink">
+              Guiding Star
+            </span>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium text-[#607277]">
+          <nav className="hidden items-center gap-7 text-[0.9375rem] text-slate md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="hover:text-[#183238] transition-colors py-1 relative"
+                className="py-1 hover:text-ink"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Action Group (Moderate radius, never pill) */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={onOpenBooking}
-              className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-medium text-white bg-[#5797A6] hover:bg-[#467d8a] active:bg-[#3d6d78] rounded-[4px] transition-colors whitespace-nowrap"
+              className="btn-cta hidden !px-4 !py-2.5 sm:inline-flex"
             >
               Book a Discovery Call
             </button>
-
-            {/* Mobile / Tablet Menu Trigger */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-[#183238] hover:text-[#5797A6] rounded-[4px] transition-colors"
-              aria-label="Toggle Navigation Menu"
+              className="p-2 text-ink md:hidden"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
-
         </div>
 
-        {/* Mobile / Tablet Drawer */}
+        {/* Absolutely positioned overlay — anchored below the header,
+            does NOT participate in document flow, so it can never
+            push the hero (or anything else) down. */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-[#DCE9EB] px-6 py-6 shadow-md animate-in fade-in duration-150">
-            <nav className="flex flex-col space-y-1">
+          <div className="absolute inset-x-0 top-full z-50 max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-line bg-paper px-5 py-5 shadow-[0_12px_24px_-16px_rgba(24,50,56,0.25)] md:hidden">
+            <nav className="flex flex-col">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2.5 px-2 text-sm font-medium text-[#183238] hover:text-[#5797A6] hover:bg-[#EEF6F7] rounded-[4px] transition-colors"
+                  className="py-3 text-lg text-ink"
                 >
-                  <span>{link.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#607277]" />
+                  {link.label}
                 </a>
               ))}
-              
-              <div className="pt-4 mt-3 border-t border-[#DCE9EB]">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenBooking();
-                  }}
-                  className="w-full py-2.5 px-4 text-center text-xs font-medium text-white bg-[#5797A6] hover:bg-[#467d8a] rounded-[4px] transition-colors flex items-center justify-center gap-2"
-                >
-                  <span>Book a Discovery Call</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-                <p className="text-center text-[11px] text-[#607277] mt-2">
-                  Confidential 1-on-1 sessions
-                </p>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenBooking();
+                }}
+                className="btn-cta mt-4 w-full"
+              >
+                Book a Discovery Call
+              </button>
             </nav>
           </div>
         )}
       </header>
 
-      {/* Screen Backdrop */}
       {mobileMenuOpen && (
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className="fixed inset-0 bg-black/20 backdrop-blur-xs lg:hidden z-40"
+          className="fixed inset-0 z-40 bg-ink/25 md:hidden"
           aria-hidden="true"
         />
       )}
