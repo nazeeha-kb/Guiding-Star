@@ -8,10 +8,12 @@ export const Hero: React.FC<HeroProps> = ({ onBeginJourney }) => {
   return (
     <section id="hero-section" className="bg-paper">
       <div className="relative md:min-h-[calc(100svh-4.25rem)]">
-        <div className="hero-image-settle relative h-[min(42svh,20rem)] overflow-hidden bg-mist sm:h-[min(46svh,24rem)] md:absolute md:inset-0 md:h-auto">
+        <div className="relative h-[min(42svh,20rem)] overflow-hidden bg-mist sm:h-[min(46svh,24rem)] md:absolute md:inset-0 md:h-auto">
           <img
             src="/two-girls.jpg"
             alt="Aliya, Guiding Star coach, photographed in natural light"
+            loading="eager"
+            fetchPriority="high"
             className="h-full w-full object-cover object-[center_12%] md:object-[center_18%]"
           />
         </div>
@@ -41,19 +43,9 @@ export const Hero: React.FC<HeroProps> = ({ onBeginJourney }) => {
       </div>
 
       <style>{`
-        .hero-image-settle {
-          opacity: 0;
-          animation: heroImageFade 900ms ease-out forwards;
-        }
-
         .hero-settle {
           opacity: 0;
           animation: heroTextFade 700ms ease-out 250ms forwards;
-        }
-
-        @keyframes heroImageFade {
-          from { opacity: 0; }
-          to { opacity: 1; }
         }
 
         @keyframes heroTextFade {
@@ -62,7 +54,6 @@ export const Hero: React.FC<HeroProps> = ({ onBeginJourney }) => {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .hero-image-settle,
           .hero-settle {
             animation: none;
             opacity: 1;
