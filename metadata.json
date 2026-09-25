@@ -1,0 +1,6 @@
+{
+  "name": "Guiding Star — Life Coaching for Women",
+  "description": "A private space to understand where you are, make sense of what you need, and move forward with greater clarity. PCC (ICF) · 12+ years experience · 1,500+ sessions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
