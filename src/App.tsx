@@ -13,6 +13,7 @@ import { Testimonials } from "./components/Testimonials";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { DiscoveryModal } from "./components/DiscoveryModal";
+import { RevealOnScroll } from "./components/RevealOnScroll";
 
 export default function App() {
   const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(false);
@@ -31,11 +32,21 @@ export default function App() {
 
       <main className="grow">
         <Hero onBeginJourney={handleOpenBooking} />
-        <Offerings onOpenBooking={handleOpenBooking} />
-        <AuthorityStrip />
-        <About onOpenBooking={handleOpenBooking} />
-        <Testimonials/>
-        <Contact onOpenBooking={handleOpenBooking} />
+        <RevealOnScroll>
+          <Offerings onOpenBooking={handleOpenBooking} />
+        </RevealOnScroll>
+        <RevealOnScroll>
+          <AuthorityStrip />
+        </RevealOnScroll>
+        <RevealOnScroll>
+          <About onOpenBooking={handleOpenBooking} />
+        </RevealOnScroll>
+        <RevealOnScroll>
+          <Testimonials />
+        </RevealOnScroll>
+        <RevealOnScroll>
+          <Contact onOpenBooking={handleOpenBooking} />
+        </RevealOnScroll>
       </main>
 
       <Footer />
