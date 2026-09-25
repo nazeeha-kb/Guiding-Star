@@ -12,7 +12,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const whatsappNumber = "971508421983";
+  const whatsappNumber = "919820872568";
   const whatsappGreeting = encodeURIComponent(
     "Hello, I came across Guiding Star and would like to inquire about coaching sessions.",
   );
@@ -54,8 +54,8 @@ export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
         <div className="mt-16 grid grid-cols-1 gap-14 border-t border-line pt-14 lg:grid-cols-12">
           <div className="space-y-6 text-base leading-relaxed text-slate lg:col-span-5">
             <p>
-              <a href="tel:+971508421983" className="text-ink hover:text-teal">
-                +971 50 842 1983
+              <a href="tel:+919820872568" className="text-ink hover:text-teal">
+                +91 98208 72568
               </a>
             </p>
             <p>

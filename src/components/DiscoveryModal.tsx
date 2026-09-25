@@ -8,7 +8,7 @@ interface DiscoveryModalProps {
 }
 
 // Replace with the real business number, digits only, country code first, no + or spaces.
-const WHATSAPP_NUMBER = "971500000000";
+const WHATSAPP_NUMBER = "919820872568";
 
 const topics = [
   { id: "emotional", label: "Emotional wellbeing" },
