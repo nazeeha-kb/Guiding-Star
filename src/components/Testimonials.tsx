@@ -39,46 +39,6 @@ export const Testimonials: React.FC = () => {
       category: "Emotional Wellbeing",
     },
     {
-      id: 3,
-      quote:
-        "Your polite nature, and the way you coordinated with different professionals to guide us through health and wellbeing during Ramzan. I'm 60 plus, and this still reached me. May Allah reward all of you.",
-      author: "Rehana Khan",
-      context: "Pune · Ramadan Wellness Blueprint",
-      category: "Wellness & Life Stage Coaching",
-    },
-    {
-      id: 4,
-      quote:
-        "I am so grateful for the Ramadan Wellness Blueprint session. It was exactly what I needed. Your guidance on balancing spiritual and physical wellness was completely on point.",
-      author: "Farzana Khan",
-      context: "Ramadan Wellness Blueprint 2026",
-      category: "Wellness & Balance",
-    },
-    {
-      id: 5,
-      quote:
-        "I would like to sincerely thank you for such a meaningful and insightful session. The way you explained how our intentions and consistency shape everything we do was especially inspiring.",
-      author: "Fazzilat Shah",
-      context: "Workshop Participant",
-      category: "Mindset & Intention",
-    },
-    {
-      id: 6,
-      quote:
-        "It was really nice talking to you. What you are doing is so appreciated, and it will help many people. Talking to you, I felt genuinely happy and good afterward.",
-      author: "Farida Doctor",
-      context: "Career Coaching Session",
-      category: "Career Clarity",
-    },
-    {
-      id: 7,
-      quote:
-        "You cleared all my doubts like a friend, and I understood your way of explaining things so well. What stood out most is that you truly understand what young people are going through.",
-      author: "Arisha Fatima",
-      context: "Youth Mentoring Session",
-      category: "Confidence & Direction",
-    },
-    {
       id: 8,
       quote:
         "I learnt so much about emotional patterns, communication, compatibility, and breaking unrealistic expectations. It gave me real direction and self-awareness I didn't have before.",
@@ -101,6 +61,38 @@ export const Testimonials: React.FC = () => {
       author: "Anonymous",
       context: "Private Coaching Client",
       category: "Emotional Support",
+    },
+    {
+      id: 11,
+      quote:
+        "She has a rare ability to see potential in people before they see it in themselves. Aliya helped me navigate academic pressure, career decisions, and figuring out my next step. She listened, understood where I was coming from, and helped me find my own answers.",
+      author: "Umme Atiya",
+      context: "Client · June 2026",
+      category: "Mentoring & Career Direction",
+    },
+    {
+      id: 12,
+      quote:
+        "Aliya excels in creating a supportive and empowering environment. Her ability to ask the right questions and provide actionable feedback has been instrumental in helping me overcome challenges and reach my goals.",
+      author: "Anosha Aasif",
+      context: "Client · August 2024",
+      category: "Personal Growth",
+    },
+    {
+      id: 13,
+      quote:
+        "Aliya has been an invaluable member of the AIM community. Her passion and enthusiasm for supporting others, especially young people, on their life and career journey through mentoring and coaching shines through.",
+      author: "Yen-Lu Chow",
+      context: "Executive Chairman, WholeTree Foundation · AIM Community",
+      category: "Mentoring & Professional Impact",
+    },
+    {
+      id: 14,
+      quote:
+        "The coaching I received from Mrs Patel has benefited me well. She has helped me reflect and realise where I must make improvements. Life coaching is something everyone must at least try.",
+      author: "Hamzah Ali Khan",
+      context: "Client · August 2021",
+      category: "Reflection & Personal Growth",
     },
   ];
 
@@ -151,7 +143,7 @@ export const Testimonials: React.FC = () => {
             In their own words
           </p>
           <h2 className="mb-5 font-serif text-[2rem] font-normal leading-[1.1] tracking-[-0.02em] text-[#1F3A44] sm:text-4xl md:text-5xl">
-            Kind words from women I&rsquo;ve had the honour of guiding
+            Kind words from people I&rsquo;ve had the honour of guiding
           </h2>
           <p className="text-sm leading-relaxed text-[#5F7780]">
             Shared with permission. Some names are kept private to protect

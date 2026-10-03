@@ -10,8 +10,7 @@ interface AboutProps {
   onOpenBooking: () => void;
 }
 
-/* Put the path to the ICF logo here (e.g. "/icf-logo.svg") to show it. */
-const ICF_LOGO = "";
+const ICF_LOGO = "/ICF-logo.png";
 
 export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
   return (
@@ -41,7 +40,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
               <img
                 src={ICF_LOGO}
                 alt="International Coaching Federation"
-                className="h-9 w-auto shrink-0"
+                className="h-12 w-auto shrink-0 rounded-sm object-contain"
               />
             )}
             <p className="text-sm leading-snug text-[#5F7780]">

@@ -19,75 +19,63 @@ interface FaqItem {
 const faqs: FaqItem[] = [
   {
     category: "About Aliya",
-    question: "Who is Aliya Patel?",
+    question: "Who am I?",
     answer:
-      "Aliya Patel is the founder of Guiding Star Life Coaching & Mentoring Consultancy. She is a Professional Certified Coach (PCC) with the International Coaching Federation. She works privately with women at a crossroads in work, family, and self.",
+      "Aliya Patel is the founder of Guiding Star Life Coaching & Mentoring Consultancy. She is a PCC coach with the International Coaching Federation and supports women navigating change in work, family, relationships, and self.",
   },
   {
     category: "About Aliya",
-    question: "What are Aliya's qualifications and credentials?",
+    question: "What are your credentials?",
     answer:
-      "She holds a PCC credential with the ICF, has post-graduate counselling psychology training, a diploma in integrated counselling psychology, certified Islamic marriage counselling, KHDA educator certification, and NLP coaching. In total she holds 24 professional certifications, memberships, and qualifications.",
+      "Aliya holds a PCC credential through the ICF, has counselling psychology training, a diploma in integrated counselling psychology, and certified Islamic marriage counselling training. She also brings educational and mentoring experience from professional practice and community work.",
   },
   {
     category: "Coaching",
     question: "What is coaching?",
     answer:
-      "Coaching is a private, practical conversation. You look at what is happening, you get clearer, and you decide what to do next. It is not diagnosis, and it is not a script.",
+      "Coaching is a focused, collaborative process that helps you gain clarity, notice patterns, and move forward with more intention. It is practical, personal, and shaped around your context.",
   },
   {
     category: "Coaching",
     question: "How is coaching different from therapy?",
     answer:
-      "Coaching does not treat mental-health conditions, and it does not diagnose. Therapy is clinical care. Coaching is for people who want clarity and a next step in life, work, or relationships. If something beyond coaching is needed, Aliya will say so.",
+      "Coaching is not therapy or diagnosis. It is a reflective space for clarity, direction, and action. Therapy is clinical support. Coaching is for growth, decision-making, and personal development.",
   },
   {
     category: "Coaching",
-    question: "How does Aliya's coaching approach work?",
+    question: "What is your approach to coaching?",
     answer:
-      "Sessions are one-to-one. The work moves through awareness, reflection, responsibility, and change. It is a confidential conversation, not a programme of techniques.",
+      "The process is focused and collaborative. We begin with awareness, then reflect on what is happening, and move into practical choices that feel aligned to your life. Faith can be part of the conversation when it feels relevant.",
   },
   {
     category: "Coaching",
-    question: "Can coaching help me with career or life transitions?",
+    question: "Do you offer faith-based coaching?",
     answer:
-      "Yes. Career guidance, career transition, and life transitions are part of the practice, along with relationships, student mentoring, and personal growth.",
-  },
-  {
-    category: "Coaching",
-    question: "Is coaching faith-based?",
-    answer:
-      "Coaching is not a religious programme. If faith is part of how you make sense of life, it can be in the conversation.",
+      "Yes. Faith can be woven into the process naturally, especially when it supports your decision-making, values, and sense of purpose. The work remains practical and grounded in your real life.",
   },
   {
     category: "Sessions",
-    question: "How long is a coaching session?",
+    question: "How long is a session and how often do we meet?",
     answer:
-      "A discovery call is twenty minutes. The length of ongoing sessions is agreed when you begin.",
+      "Sessions are online and are typically one hour long. Most clients meet every one to two weeks, with a gap of 8 to 12 days between sessions depending on the pace of the work and what feels supportive.",
   },
   {
     category: "Sessions",
-    question: "How frequently do sessions take place?",
+    question: "Do you offer packages?",
     answer:
-      "You decide together. There is no fixed package announced in advance.",
+      "Yes, flexible packages are available. The structure is tailored to your goals, your season of life, and the pace that feels sustainable for you.",
   },
   {
     category: "Sessions",
-    question: "How many sessions will I need?",
+    question: "Are online sessions available?",
     answer:
-      "It depends on what you bring. Some people need a short stretch of clarity. Others stay for a longer season. You decide as you go.",
+      "Yes. Sessions are offered online, one to one, so the work can be consistent and accessible no matter where you are based.",
   },
   {
     category: "Sessions",
-    question: "Are sessions conducted online?",
+    question: "Is coaching confidential?",
     answer:
-      "Yes. Sessions are held online, including across GST, IST, GMT, and EST.",
-  },
-  {
-    category: "Sessions",
-    question: "Are coaching sessions confidential?",
-    answer:
-      "Yes. Sessions stay confidential, except where there is a risk of harm or a legal duty to disclose. The work follows the ICF Code of Ethics.",
+      "Yes, absolutely. Sessions are confidential and held in a respectful space. The only exceptions are situations involving risk or legal obligations, which are explained clearly at the start.",
   },
 ];
 

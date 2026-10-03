@@ -11,6 +11,8 @@ export const Footer: React.FC = () => {
         </a>
         <div className="flex flex-col gap-2 sm:items-end">
           <p>PCC (ICF) · AIM Certified Mentor</p>
+          <p>Udyam Registration No. UDYAM-MH-18-0043943</p>
+          <p>Changing lives since 2021</p>
           <p>© {new Date().getFullYear()} Guiding Star</p>
         </div>
       </div>

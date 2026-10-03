@@ -19,11 +19,23 @@ interface ContactProps {
   onOpenBooking: () => void;
 }
 
-/* Add your real profile links. Icons only render for entries with a url. */
+/* Update these with the final profile URLs if the handles change. */
 const SOCIALS: { label: string; url: string; icon: LucideIcon }[] = [
-  { label: "Instagram", url: "", icon: Instagram },
-  { label: "LinkedIn", url: "", icon: Linkedin },
-  { label: "YouTube", url: "", icon: Youtube },
+  {
+    label: "Instagram",
+    url: "https://www.instagram.com/",
+    icon: Instagram,
+  },
+  {
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/aliyapatel",
+    icon: Linkedin,
+  },
+  {
+    label: "YouTube",
+    url: "https://www.youtube.com/",
+    icon: Youtube,
+  },
 ];
 
 const inputClass =
