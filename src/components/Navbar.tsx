@@ -9,6 +9,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -41,6 +42,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.getElementById(link.href.replace("#", "")))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry) {
+          setActiveSection(visibleEntry.target.id);
+        }
+      },
+      {
+        rootMargin: "-24% 0px -52% 0px",
+        threshold: [0.15, 0.35, 0.6],
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   // One-word labels; the hrefs are unchanged.
   const navLinks = [
     { label: "About", href: "#about" },
@@ -71,16 +99,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-6 text-[0.9375rem] text-slate lg:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="link-quiet py-1"
-              >
-                {link.label}
-              </a>
-            ))}
+          <nav className="hidden items-center gap-6 text-[0.9375rem] lg:flex">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "");
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setActiveSection(link.href.replace("#", ""))}
+                  className={`relative py-1 transition-colors ${
+                    isActive ? "text-ink" : "text-slate"
+                  }`}
+                >
+                  <span className="relative z-10">{link.label}</span>
+                  <span
+                    className={`absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-[#3E8A99] transition-all duration-200 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                    aria-hidden="true"
+                  />
+                </a>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -107,16 +147,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
         {mobileMenuOpen && (
           <div className="absolute inset-x-0 top-full z-50 max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-line bg-paper px-5 py-5 shadow-[0_12px_24px_-16px_rgba(24,50,56,0.25)] lg:hidden">
             <nav className="flex flex-col">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="py-3 text-lg text-ink"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace("#", "");
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setActiveSection(link.href.replace("#", ""));
+                    }}
+                    className={`flex items-center justify-between py-3 text-lg transition-colors ${
+                      isActive ? "text-ink" : "text-slate"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    <span
+                      className={`h-[2px] w-8 rounded-full bg-[#3E8A99] transition-opacity ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </a>
+                );
+              })}
               <button
                 type="button"
                 onClick={() => {

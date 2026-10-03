@@ -21,7 +21,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
       <div className="mx-auto grid max-w-6xl items-start gap-14 lg:grid-cols-12 lg:gap-16">
         {/* Portrait (stays in view on desktop while the story scrolls) */}
         <div className="lg:col-span-5 lg:sticky lg:top-28">
-          <div className="relative mx-auto max-w-[22rem] lg:mx-0 lg:max-w-none">
+          <div className="relative mx-auto max-w-[22rem] lg:mx-0 lg:max-w-[26rem]">
             <div
               className="absolute inset-0 translate-x-3 translate-y-3 border border-[#1F3A44]/25"
               aria-hidden="true"
@@ -32,20 +32,20 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
                 alt="Portrait of Aliya Patel, founder of Guiding Star"
                 className="h-full w-full object-cover object-top"
               />
-            </div>
-          </div>
 
-          <div className="mx-auto mt-10 flex max-w-[22rem] items-center gap-4 border-t border-[#1F3A44]/15 pt-5 lg:mx-0 lg:max-w-none">
-            {ICF_LOGO && (
-              <img
-                src={ICF_LOGO}
-                alt="International Coaching Federation"
-                className="h-12 w-auto shrink-0 rounded-sm object-contain"
-              />
-            )}
-            <p className="text-sm leading-snug text-[#5F7780]">
-              PCC, International Coaching Federation
-            </p>
+              <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-[0.2rem] border border-[#1F3A44]/10 bg-white/95 px-3.5 py-2.5 shadow-[0_12px_30px_-18px_rgba(31,58,68,0.5)] backdrop-blur-[1px] sm:left-5 sm:right-5 sm:gap-4 sm:px-4 sm:py-3 lg:bottom-6 lg:left-6 lg:right-auto lg:max-w-[19rem] xl:-translate-x-20 lg:translate-x-10 md:-translate-x-20 lg:translate-y-[-0.25rem]">
+                {ICF_LOGO && (
+                  <img
+                    src={ICF_LOGO}
+                    alt="International Coaching Federation"
+                    className="h-9 w-auto shrink-0 rounded-sm object-contain sm:h-10"
+                  />
+                )}
+                <p className="text-[0.6rem] font-medium leading-snug tracking-[0.12em] text-[#5F7780] uppercase sm:text-[0.65rem] lg:text-[0.68rem]">
+                  PCC, International Coaching Federation
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
