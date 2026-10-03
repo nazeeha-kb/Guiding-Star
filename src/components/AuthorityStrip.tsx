@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Fires once when the element enters the viewport, then stops observing.
+/*
+  Palette (shared with the other sections):
+  ink #1F3A44 · muted #5F7780 · accent #3E8A99 · hairline = ink at 15%
+*/
+
 function useInView<T extends HTMLElement>(threshold = 0.4) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -16,7 +20,7 @@ function useInView<T extends HTMLElement>(threshold = 0.4) {
           observer.disconnect();
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(el);
@@ -26,7 +30,6 @@ function useInView<T extends HTMLElement>(threshold = 0.4) {
   return { ref, inView };
 }
 
-// Animates 0 → target once `start` is true. Respects reduced motion.
 function useCountUp(target: number, start: boolean, duration = 1400) {
   const [value, setValue] = useState(0);
   const prefersReducedMotion =
@@ -59,52 +62,29 @@ function useCountUp(target: number, start: boolean, duration = 1400) {
 }
 
 interface StatItem {
-  numeric: number | null;
-  prefix?: string;
-  suffix?: string;
-  display?: string;
+  numeric: number;
+  suffix: string;
   label: string;
 }
 
 const stats: StatItem[] = [
-  {
-    numeric: null,
-    display: "PCC (ICF)",
-    label: "Professional Certified Coach, International Coaching Federation.",
-  },
-  {
-    numeric: 12,
-    suffix: "+ years",
-    label: "People development — facilitation, mentoring, and guidance.",
-  },
-  {
-    numeric: 1500,
-    suffix: "+",
-    label: "Confidential coaching and mentoring sessions.",
-  },
-  {
-    numeric: null,
-    display: "Global Practice",
-    label: "India, the USA, the UK, and the UAE.",
-  },
+  { numeric: 12, suffix: "+ years", label: "in people development and coaching" },
+  { numeric: 1500, suffix: "+", label: "private one-to-one sessions" },
+  { numeric: 300, suffix: "+", label: "people supported during the pandemic" },
+  { numeric: 24, suffix: "+", label: "certifications, memberships, and qualifications" },
 ];
 
 const StatFigure: React.FC<{ item: StatItem; start: boolean }> = ({ item, start }) => {
-  const count = useCountUp(item.numeric ?? 0, start && item.numeric !== null);
-
-  if (item.numeric === null) {
-    return (
-      <p className="font-serif text-[1.5rem] leading-[1.1] tracking-[-0.02em] text-ink sm:text-[2rem] sm:leading-none sm:tracking-[-0.03em] md:text-[2.35rem] lg:text-[2.75rem]">
-        {item.display}
-      </p>
-    );
-  }
+  const count = useCountUp(item.numeric, start);
 
   return (
-    <p className="font-serif text-[1.5rem] leading-[1.1] tracking-[-0.02em] text-ink tabular-nums sm:text-[2rem] sm:leading-none sm:tracking-[-0.03em] md:text-[2.35rem] lg:text-[2.75rem]">
-      {item.prefix}
-      {count.toLocaleString()}
-      {item.suffix}
+    <p className="whitespace-nowrap font-serif leading-none text-[#1F3A44] tabular-nums">
+      <span className="text-[2.3rem] tracking-[-0.03em] sm:text-[3.2rem] lg:text-[3.6rem]">
+        {count.toLocaleString()}
+      </span>
+      <span className="ml-1 text-[1.1rem] text-[#3E8A99] sm:text-[1.6rem]">
+        {item.suffix}
+      </span>
     </p>
   );
 };
@@ -113,28 +93,46 @@ export const AuthorityStrip: React.FC = () => {
   const { ref, inView } = useInView<HTMLUListElement>();
 
   return (
-    <section id="metrics" className="bg-mist px-5 py-14 sm:px-8 sm:py-16 md:py-24">
-      <div className="mx-auto max-w-[1100px]">
-        <h2 className="max-w-[14ch] font-serif text-[1.85rem] font-normal leading-[1.1] text-ink sm:text-4xl md:text-5xl">
-          Metrics and certifications
-        </h2>
-        <p className="mt-3 max-w-[38ch] text-base leading-[1.6] text-slate sm:mt-4 sm:text-lg">
-          The credentials behind a private practice — not a brochure of badges.
-        </p>
+    <section
+      id="metrics"
+      className="bg-paper px-5 py-20 sm:px-8 md:py-28"
+    >
+      <div className="mx-auto max-w-6xl">
+        {/* Header */}
+        <div className="grid items-end gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-16">
+          <h2 className="max-w-[18ch] font-serif text-[2.2rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[2.9rem] md:text-[3.4rem]">
+            Years of sitting with people at the hard bits.
+          </h2>
+          <p className="max-w-[38ch] text-base leading-[1.75] text-[#5F7780]">
+            Aliya Patel is a Professional Certified Coach (PCC) with the
+            International Coaching Federation.
+          </p>
+        </div>
 
+        {/* Stats */}
         <ul
           ref={ref}
-          className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 sm:mt-14 sm:gap-x-16 sm:gap-y-12"
+          className="mt-12 grid grid-cols-2 border-t border-[#1F3A44] lg:mt-16 lg:grid-cols-4"
         >
-          {stats.map((item) => (
-            <li key={item.label} className="max-w-[16rem] sm:max-w-[28rem]">
+          {stats.map((item, i) => (
+            <li
+              key={item.label}
+              className={`py-7 sm:py-10 ${
+                i < 2 ? "border-b border-[#1F3A44]/15" : ""
+              } ${
+                i % 2 === 1
+                  ? "border-l border-[#1F3A44]/15 pl-5 sm:pl-8"
+                  : "pr-5 sm:pr-8"
+              } lg:border-b-0 lg:border-l lg:border-[#1F3A44]/15 lg:px-8 lg:py-12 lg:first:border-l-0 lg:first:pl-0`}
+            >
               <StatFigure item={item} start={inView} />
-              <p className="mt-2 max-w-[22ch] text-sm leading-[1.55] text-slate sm:mt-3 sm:max-w-[32ch] sm:text-base sm:leading-[1.65]">
+              <p className="mt-3 max-w-[22ch] text-[0.8rem] leading-[1.55] text-[#5F7780] sm:mt-4 sm:text-base">
                 {item.label}
               </p>
             </li>
           ))}
         </ul>
+        <div className="hidden border-t border-[#1F3A44]/15 lg:block" aria-hidden="true" />
       </div>
     </section>
   );

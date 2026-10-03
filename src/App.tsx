@@ -7,9 +7,13 @@ import React, { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
+import { WhoIWorkWith } from "./components/WhoIWorkWith";
+import { Approach } from "./components/Approach";
 import { AuthorityStrip } from "./components/AuthorityStrip";
 import { Offerings } from "./components/Offerings";
+import { Credentials } from "./components/Credentials";
 import { Testimonials } from "./components/Testimonials";
+import { Faq } from "./components/Faq";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { DiscoveryModal } from "./components/DiscoveryModal";
@@ -32,18 +36,39 @@ export default function App() {
 
       <main className="grow">
         <Hero onBeginJourney={handleOpenBooking} />
-        <RevealOnScroll>
-          <Offerings onOpenBooking={handleOpenBooking} />
-        </RevealOnScroll>
+
         <RevealOnScroll>
           <AuthorityStrip />
         </RevealOnScroll>
+        
         <RevealOnScroll>
           <About onOpenBooking={handleOpenBooking} />
         </RevealOnScroll>
+
+        <RevealOnScroll>
+          <WhoIWorkWith onOpenBooking={handleOpenBooking} />
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <Approach />
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <Offerings onOpenBooking={handleOpenBooking} />
+        </RevealOnScroll>
+
+        <RevealOnScroll>
+          <Credentials />
+        </RevealOnScroll>
+
         <RevealOnScroll>
           <Testimonials />
         </RevealOnScroll>
+
+        <RevealOnScroll>
+          <Faq />
+        </RevealOnScroll>
+
         <RevealOnScroll>
           <Contact onOpenBooking={handleOpenBooking} />
         </RevealOnScroll>

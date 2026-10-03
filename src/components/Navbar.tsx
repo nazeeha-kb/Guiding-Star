@@ -42,9 +42,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   }, []);
 
   const navLinks = [
-    { label: "Offerings", href: "#offerings" },
     { label: "About", href: "#about" },
+    { label: "Who This Is For", href: "#who-this-is-for" },
+    { label: "Approach", href: "#approach" },
+    { label: "Offerings", href: "#offerings" },
+    { label: "Credentials", href: "#credentials" },
     { label: "Voices", href: "#testimonials" },
+    { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -66,12 +70,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-7 text-[0.9375rem] text-slate md:flex">
+          <nav className="hidden items-center gap-6 text-[0.9375rem] text-slate lg:flex">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="py-1 hover:text-ink"
+                className="link-quiet py-1"
               >
                 {link.label}
               </a>
@@ -89,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-ink md:hidden"
+              className="p-2 text-ink lg:hidden"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -98,11 +102,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
           </div>
         </div>
 
-        {/* Absolutely positioned overlay — anchored below the header,
-            does NOT participate in document flow, so it can never
-            push the hero (or anything else) down. */}
+        {/* Overlay sits under the header and does not push the page down. */}
         {mobileMenuOpen && (
-          <div className="absolute inset-x-0 top-full z-50 max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-line bg-paper px-5 py-5 shadow-[0_12px_24px_-16px_rgba(24,50,56,0.25)] md:hidden">
+          <div className="absolute inset-x-0 top-full z-50 max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-line bg-paper px-5 py-5 shadow-[0_12px_24px_-16px_rgba(24,50,56,0.25)] lg:hidden">
             <nav className="flex flex-col">
               {navLinks.map((link) => (
                 <a
@@ -132,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
       {mobileMenuOpen && (
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className="fixed inset-0 z-40 bg-ink/25 md:hidden"
+          className="fixed inset-0 z-40 bg-ink/25 lg:hidden"
           aria-hidden="true"
         />
       )}

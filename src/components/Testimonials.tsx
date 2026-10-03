@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 interface TestimonialItem {
@@ -8,6 +8,15 @@ interface TestimonialItem {
   context: string;
   category: string;
 }
+
+/*
+  Palette (shared with the other sections):
+  ink     #1F3A44  headings + quotes
+  muted   #5F7780  secondary text
+  accent  #3E8A99  soft teal: label, dots, links, buttons
+  tint    #E3F0F2  pale teal for the avatar
+  blush   #EBAE95  warm peach for the quote mark
+*/
 
 export const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -95,6 +104,8 @@ export const Testimonials: React.FC = () => {
     },
   ];
 
+  const touchStartX = useRef<number | null>(null);
+
   const handlePrev = () => {
     setCurrentIndex((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1,
@@ -107,114 +118,160 @@ export const Testimonials: React.FC = () => {
     );
   };
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) < 50) return;
+    if (delta < 0) handleNext();
+    else handlePrev();
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") handlePrev();
+    if (e.key === "ArrowRight") handleNext();
+  };
+
   const current = testimonials[currentIndex];
+  const initial = current.author === "Anonymous" ? "♡" : current.author.charAt(0);
 
   return (
     <section
       id="testimonials"
-      className="py-20 md:py-28 bg-white border-b border-[#DCE9EB]"
+      className="border-b border-[#1F3A44]/10 bg-paper px-5 py-20 sm:px-8 md:px-10 md:py-28"
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
+      <div className="mx-auto max-w-5xl">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-18 pb-6 border-b border-[#DCE9EB]">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold tracking-widest text-[#5797A6] uppercase mb-2">
-              Client Reflections
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-[#183238] leading-tight">
-              Testimonials
-            </h2>
-          </div>
-
-          <p className="text-xs sm:text-sm text-[#607277] max-w-sm font-normal leading-relaxed">
-            Shared with permission. Client names are initialed to maintain
-            strict personal and professional confidentiality.
+        <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+          <p className="mb-3 font-serif text-lg italic text-[#3E8A99]">
+            In their own words
+          </p>
+          <h2 className="mb-5 font-serif text-[2rem] font-normal leading-[1.1] tracking-[-0.02em] text-[#1F3A44] sm:text-4xl md:text-5xl">
+            Kind words from women I&rsquo;ve had the honour of guiding
+          </h2>
+          <p className="text-sm leading-relaxed text-[#5F7780]">
+            Shared with permission. Some names are kept private to protect
+            confidentiality.
           </p>
         </div>
 
-        {/* Horizontal Editorial Carousel Container */}
-        <div className="border border-[#DCE9EB] bg-[#EEF6F7]/50 p-8 sm:p-12 md:p-16 relative">
-          {/* Subtle Decorative Quote Icon */}
-          <div className="mb-6 sm:mb-8 text-[#5797A6]/30">
-            <Quote className="w-10 h-10 sm:w-12 sm:h-12" />
+        {/* Testimonial Card */}
+        <div
+          className="relative border border-[#1F3A44]/15 border-t-2 border-t-[#1F3A44] bg-white/80 px-6 py-9 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3E8A99] sm:px-12 sm:py-14 md:px-16"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          onKeyDown={onKeyDown}
+          tabIndex={0}
+          role="group"
+          aria-roledescription="carousel"
+          aria-label="Client testimonials"
+        >
+          <Quote
+            className="mb-5 h-8 w-8 text-[#EBAE95] sm:mb-6 sm:h-10 sm:w-10"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
+
+          {/* All quotes share one grid cell, so the card keeps the height of
+              the longest one and nothing jumps when you change slides. */}
+          <div className="mb-8 grid sm:mb-10" aria-live="polite">
+            {testimonials.map((t, i) => (
+              <blockquote
+                key={t.id}
+                aria-hidden={i !== currentIndex}
+                className={`col-start-1 row-start-1 font-serif text-[1.15rem] italic leading-[1.65] text-[#1F3A44] transition-opacity duration-300 motion-reduce:transition-none sm:text-2xl sm:leading-[1.6] md:text-[1.7rem] ${
+                  i === currentIndex ? "opacity-100" : "pointer-events-none opacity-0"
+                }`}
+              >
+                {t.quote}
+              </blockquote>
+            ))}
           </div>
 
-          {/* Active Testimonial Quote */}
-          <div className="min-h-[180px] sm:min-h-[160px] md:min-h-[140px] flex flex-col justify-between mb-8 sm:mb-12">
-            <blockquote className="font-serif text-xl sm:text-2xl md:text-3xl text-[#183238] font-normal leading-relaxed tracking-tight transition-opacity duration-300">
-              &ldquo;{current.quote}&rdquo;
-            </blockquote>
-          </div>
-
-          {/* Client Details & Controls Strip */}
-          <div className="pt-6 border-t border-[#DCE9EB] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            {/* Author Attribution */}
-            <div>
-              <div className="flex items-center gap-3 mb-1">
-                <span className="font-serif text-lg sm:text-xl text-[#183238] font-medium">
+          {/* Author + controls */}
+          <div className="flex items-center justify-between gap-4 border-t border-[#1F3A44]/10 pt-6">
+            <div className="flex min-w-0 items-center gap-4">
+              <div
+                className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#E3F0F2] font-serif text-lg text-[#3E8A99] sm:h-12 sm:w-12"
+                aria-hidden="true"
+              >
+                {initial}
+              </div>
+              <div className="min-w-0">
+                <p className="font-serif text-lg leading-tight text-[#1F3A44]">
                   {current.author}
-                </span>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-[#5797A6] bg-white border border-[#DCE9EB] px-2.5 py-0.5 rounded-[3px]">
-                  {current.category}
-                </span>
+                </p>
+                <p className="mt-0.5 text-xs text-[#5F7780]">
+                  {current.context}
+                </p>
               </div>
-              <p className="text-xs text-[#607277]">{current.context}</p>
             </div>
 
-            {/* Navigation Controls & Slide Index */}
-            <div className="flex items-center gap-4 shrink-0">
-              {/* Subtle Slide Indicator */}
-              <div className="text-xs font-mono text-[#607277] select-none tracking-wider">
-                <span className="font-medium text-[#183238]">
-                  0{currentIndex + 1}
-                </span>
-                <span className="mx-1 text-[#DCE9EB]">/</span>
-                <span>0{testimonials.length}</span>
-              </div>
-
-              {/* Prev / Next Buttons */}
-              <div className="flex items-center gap-1.5">
-                <button
-                  onClick={handlePrev}
-                  className="p-2.5 bg-white border border-[#DCE9EB] hover:border-[#5797A6] text-[#183238] hover:text-[#5797A6] rounded-[4px] transition-colors active:bg-[#EEF6F7]"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-2.5 bg-white border border-[#DCE9EB] hover:border-[#5797A6] text-[#183238] hover:text-[#5797A6] rounded-[4px] transition-colors active:bg-[#EEF6F7]"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="flex h-10 w-10 items-center justify-center border border-[#1F3A44]/20 text-[#1F3A44] transition-colors hover:border-[#1F3A44] hover:bg-[#1F3A44] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99]"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="flex h-10 w-10 items-center justify-center border border-[#1F3A44] bg-[#1F3A44] text-white transition-colors hover:border-[#3E8A99] hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99]"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
 
-          {/* Slide Indicator Bar at bottom of card */}
-          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#DCE9EB]">
-            <div
-              className="h-full bg-[#5797A6] transition-all duration-300"
-              style={{
-                width: `${((currentIndex + 1) / testimonials.length) * 100}%`,
-              }}
-            />
-          </div>
+          {/* Theme of this story */}
+          <p className="mt-6 text-xs text-[#3E8A99]">
+            <span className="border border-[#3E8A99]/30 bg-[#E3F0F2] px-3 py-1 font-medium">
+              {current.category}
+            </span>
+          </p>
         </div>
 
-        {/* Ethical Confidentiality Notice */}
-        <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#607277]">
-          <p>
+        {/* Progress bars (tall tap targets, thin visuals) */}
+        <div className="mt-6 flex items-center justify-center">
+          {testimonials.map((t, i) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setCurrentIndex(i)}
+              aria-label={`Show testimonial ${i + 1} of ${testimonials.length}`}
+              aria-current={i === currentIndex}
+              className="group flex h-8 items-center px-[3px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#3E8A99]"
+            >
+              <span
+                className={`block h-[3px] transition-all duration-300 motion-reduce:transition-none ${
+                  i === currentIndex
+                    ? "w-8 bg-[#3E8A99]"
+                    : "w-4 bg-[#1F3A44]/20 group-hover:bg-[#3E8A99]/50 sm:w-5"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+
+        {/* Confidentiality note */}
+        <div className="mt-10 flex flex-col justify-between gap-3 border-t border-[#1F3A44]/15 pt-6 text-xs text-[#5F7780] sm:flex-row sm:items-center">
+          <p className="max-w-[60ch]">
             Coaching sessions are 1-on-1 and strictly confidential. References
             are available upon mutual agreement.
           </p>
           <a
             href="#contact"
-            className="text-[#5797A6] hover:underline font-medium inline-flex items-center gap-1 self-start sm:self-auto"
+            className="self-start font-medium text-[#3E8A99] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] sm:self-auto"
           >
-            <span>Inquire about sessions</span>
-            <span>&rarr;</span>
+            Book a conversation &rarr;
           </a>
         </div>
       </div>

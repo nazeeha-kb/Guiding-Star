@@ -1,80 +1,97 @@
 import React from "react";
 
+/*
+  Palette (shared with the other sections):
+  ink #1F3A44 · muted #5F7780 · accent #3E8A99 · hairline = ink at 15%
+  Background uses your existing `bg-mist` token, same blue as the Approach section.
+*/
+
 interface AboutProps {
   onOpenBooking: () => void;
 }
 
+/* Put the path to the ICF logo here (e.g. "/icf-logo.svg") to show it. */
+const ICF_LOGO = "";
+
 export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
   return (
-    <section id="about" className="bg-paper px-5 py-14 sm:px-8 sm:py-20 md:py-24 lg:py-32">
-      <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-start gap-8 sm:gap-10 md:grid-cols-12 md:gap-12 lg:gap-20">
+    <section
+      id="about"
+      className="bg-mist px-5 py-20 sm:px-8 md:py-28 lg:py-32"
+    >
+      <div className="mx-auto grid max-w-6xl items-start gap-14 lg:grid-cols-12 lg:gap-16">
+        {/* Portrait (stays in view on desktop while the story scrolls) */}
+        <div className="lg:col-span-5 lg:sticky lg:top-28">
+          <div className="relative mx-auto max-w-[22rem] lg:mx-0 lg:max-w-none">
+            <div
+              className="absolute inset-0 translate-x-3 translate-y-3 border border-[#1F3A44]/25"
+              aria-hidden="true"
+            />
+            <div className="relative aspect-[4/5] bg-white/60">
+              <img
+                src="/coach-portrait.jpeg"
+                alt="Portrait of Aliya Patel, founder of Guiding Star"
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+          </div>
 
-        {/* Portrait column */}
-        {/* Portrait column */}
-<div className="md:col-span-5 md:pt-1">
-  <div className="relative mx-auto w-full max-w-[22rem] sm:max-w-[24rem] md:mx-0 md:w-full md:max-w-[22rem] lg:max-w-[26rem]">
-    {/* Offset panel — same device as the hero, for consistency */}
-    <div
-      className="absolute -bottom-4 -right-4 h-full w-full bg-[#3D7A88] hidden sm:block"
-      aria-hidden="true"
-    />
+          <div className="mx-auto mt-10 flex max-w-[22rem] items-center gap-4 border-t border-[#1F3A44]/15 pt-5 lg:mx-0 lg:max-w-none">
+            {ICF_LOGO && (
+              <img
+                src={ICF_LOGO}
+                alt="International Coaching Federation"
+                className="h-9 w-auto shrink-0"
+              />
+            )}
+            <p className="text-sm leading-snug text-[#5F7780]">
+              PCC, International Coaching Federation
+            </p>
+          </div>
+        </div>
 
-    <img
-      src="/coach-portrait.jpeg"
-      alt="Portrait of Aliya, Guiding Star coach"
-      className="relative aspect-[4/5] w-full border border-[#DCE9EB] bg-white object-cover object-top"
-    />
-
-    {/* Stat as a typographic moment — qualitative, not numeric, since
-        AuthorityStrip immediately follows and owns the figures */}
-    <div className="absolute -bottom-6 -left-5 sm:-bottom-7 sm:-left-7 max-w-[9.5rem] border border-[#DCE9EB] bg-paper px-4 py-3 sm:px-5 sm:py-4">
-      <p className="font-serif text-2xl leading-none text-ink sm:text-3xl">PCC</p>
-      <p className="mt-1.5 text-xs leading-snug text-slate">
-        ICF-credentialed coach
-      </p>
-    </div>
-  </div>
-</div>
-
-        {/* Text column */}
-        <div className="mt-10 md:col-span-7 md:mt-0 md:pt-0 lg:pt-2">
-          <h2 className="max-w-[13ch] font-serif text-[1.85rem] font-normal leading-[1.1] text-ink sm:text-[2.35rem] md:text-4xl lg:text-5xl">
-            The coach who has lived the questions.
+        {/* Story */}
+        <div className="lg:col-span-7 lg:pl-4">
+          <p className="font-serif text-lg italic text-[#3E8A99]">Who I am</p>
+          <h2 className="mt-3 max-w-[14ch] font-serif text-[2.3rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[3rem] md:text-[3.6rem]">
+            At 38, she became a student again.
           </h2>
 
-          {/* Lead line pulled out as a quote-weight statement */}
-          <div className="mt-6 flex gap-3 sm:mt-8">
-            <span className="mt-1 w-px shrink-0 self-stretch bg-[#5797A6]" aria-hidden="true" />
-            <p className="max-w-[38ch] font-serif text-lg italic leading-[1.6] text-ink sm:text-xl">
-              Aliya helps women decide what comes next when the familiar way
-              forward no longer fits.
+          <div className="mt-10 max-w-[46ch] space-y-5 text-base leading-[1.8] text-[#5F7780] sm:text-lg">
+            <p className="text-[#1F3A44]">
+              Aliya Patel is the founder of Guiding Star Life Coaching &amp;
+              Mentoring Consultancy.
+            </p>
+            <p>
+              She married young, became a mother early, and spent nearly two
+              decades holding home, caregiving, and family business together.
+            </p>
+            <p>
+              Somewhere in the middle of that, she started looking more closely
+              at her own life. She went back to study. At 38, she became a
+              student again. That decision is what opened the door to coaching
+              and mentoring.
+            </p>
+            <p>
+              She now sits with women (and others) who are in the middle of a
+              personal, relationship, career, or life change. She has coached
+              through BetterUp, TaskHuman, and Mindtales, and currently works
+              with the Association of Muslim Professionals and My Muslim
+              Mentors.
             </p>
           </div>
 
-          <div className="mt-6 max-w-[42ch] space-y-4 text-base leading-[1.7] text-slate sm:mt-7 sm:text-lg">
-            <p>
-              Marriage, motherhood, and supporting her specially-abled sister
-              taught her how much careful guidance can change a life. At 46,
-              she became a student again.
+          <blockquote className="mt-12 max-w-[34ch] border-l-2 border-[#3E8A99] pl-6">
+            <p className="font-serif text-[1.5rem] italic leading-[1.35] text-[#1F3A44] sm:text-[1.75rem]">
+              &ldquo;One can edit a page, one cannot edit a blank.&rdquo;
             </p>
-            <p>
-              The work is accredited coaching, held with counselling
-              psychology — a confidential conversation, not a script.
-            </p>
-          </div>
-
-          <div className="mt-8 border-t border-[#DCE9EB] pt-5 sm:mt-10 sm:pt-6">
-            <p className="mb-2 text-sm text-slate">Trusted by teams at</p>
-            <p className="max-w-[46ch] text-sm leading-relaxed text-slate">
-              BetterUp, TaskHuman, My Muslim Mentor and Mindtales UAE — plus
-              pro-bono coaching for 300+ people during COVID-19.
-            </p>
-          </div>
+            <footer className="mt-3 text-sm text-[#5F7780]">Judy Becault</footer>
+          </blockquote>
 
           <button
             type="button"
             onClick={onOpenBooking}
-            className="btn-cta mt-8 w-full sm:mt-10 sm:w-auto"
+            className="mt-12 w-full bg-[#1F3A44] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3E8A99] sm:w-auto"
           >
             Book a Discovery Call
           </button>
