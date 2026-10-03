@@ -25,7 +25,7 @@ export const Testimonials: React.FC = () => {
     {
       id: 1,
       quote:
-        "I came to this workshop expecting a checklist for marriage. I left with a mirror. I learned to pause instead of react, to choose connection over correction. This wasn't pre-marriage counseling — it was pre-life counseling.",
+        "I came to this workshop expecting a checklist for marriage. I left with a mirror. I learned to pause instead of react, to choose connection over correction. This wasn't pre-marriage counseling, it was pre-life counseling.",
       author: "Rumaisa Nazir",
       context: "Pre-Marital Coaching Participant",
       category: "Relationships & Self-Awareness",
@@ -33,7 +33,7 @@ export const Testimonials: React.FC = () => {
     {
       id: 2,
       quote:
-        "I'm feeling really great, happy, and having fun in life. Even my health improved within days. Your words when we spoke made me really change my way — it was deep and impactful, though it hurt me at first to hear.",
+        "I'm feeling really great, happy, and having fun in life. Even my health improved within days. Your words when we spoke made me really change my way. It was deep and impactful, though it hurt me at first to hear.",
       author: "Zohra Altaf",
       context: "Mississauga, Ontario · 1:1 Coaching",
       category: "Emotional Wellbeing",
@@ -41,7 +41,7 @@ export const Testimonials: React.FC = () => {
     {
       id: 3,
       quote:
-        "Your polite nature, and the way you coordinated with different professionals to guide us through health and wellbeing during Ramzan — I'm 60 plus, and this still reached me. May Allah reward all of you.",
+        "Your polite nature, and the way you coordinated with different professionals to guide us through health and wellbeing during Ramzan. I'm 60 plus, and this still reached me. May Allah reward all of you.",
       author: "Rehana Khan",
       context: "Pune · Ramadan Wellness Blueprint",
       category: "Wellness & Life Stage Coaching",
@@ -49,7 +49,7 @@ export const Testimonials: React.FC = () => {
     {
       id: 4,
       quote:
-        "I am so grateful for the Ramadan Wellness Blueprint session. It was exactly what I needed — your guidance on balancing spiritual and physical wellness was completely on point.",
+        "I am so grateful for the Ramadan Wellness Blueprint session. It was exactly what I needed. Your guidance on balancing spiritual and physical wellness was completely on point.",
       author: "Farzana Khan",
       context: "Ramadan Wellness Blueprint 2026",
       category: "Wellness & Balance",
@@ -65,7 +65,7 @@ export const Testimonials: React.FC = () => {
     {
       id: 6,
       quote:
-        "It was really nice talking to you. What you are doing is so appreciated — it will help many people. Talking to you, I felt genuinely happy and good afterward.",
+        "It was really nice talking to you. What you are doing is so appreciated, and it will help many people. Talking to you, I felt genuinely happy and good afterward.",
       author: "Farida Doctor",
       context: "Career Coaching Session",
       category: "Career Clarity",
@@ -97,7 +97,7 @@ export const Testimonials: React.FC = () => {
     {
       id: 10,
       quote:
-        "After a lot of apprehension, I finally gathered the courage to reach out — and you are truly a blessing. Your words are like an invisible hug that made me feel like someone finally has my back.",
+        "After a lot of apprehension, I finally gathered the courage to reach out, and you are truly a blessing. Your words are like an invisible hug that made me feel like someone finally has my back.",
       author: "Anonymous",
       context: "Private Coaching Client",
       category: "Emotional Support",

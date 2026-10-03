@@ -41,13 +41,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // One-word labels; the hrefs are unchanged.
   const navLinks = [
     { label: "About", href: "#about" },
-    { label: "Who This Is For", href: "#who-this-is-for" },
+    { label: "Clients", href: "#who-this-is-for" },
     { label: "Approach", href: "#approach" },
-    { label: "Offerings", href: "#offerings" },
+    { label: "Services", href: "#offerings" },
     { label: "Credentials", href: "#credentials" },
-    { label: "Voices", href: "#testimonials" },
+    { label: "Stories", href: "#testimonials" },
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];

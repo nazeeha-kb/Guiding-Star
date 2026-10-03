@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 /*
-  Palette (same as Testimonials, so the two sections feel like one page):
-  ink     #1F3A44  headings + questions
-  muted   #5F7780  answers + secondary text
-  accent  #3E8A99  soft teal
-  tint    #E3F0F2  pale teal for pills + icon circles
-  blush   #EBAE95  warm peach accent
+  Palette (shared with Approach, Offerings, Credentials, Testimonials + WhoIWorkWith):
+  ink #1F3A44 · muted #5F7780 · accent #3E8A99 · tint #E3F0F2 · wash #F3F9FA
+  hairline = ink at 10-15%
 */
 
 const CATEGORIES = ["All", "About Aliya", "Coaching", "Sessions"] as const;
@@ -95,19 +92,17 @@ const faqs: FaqItem[] = [
 ];
 
 const AskCard: React.FC<{ className?: string }> = ({ className = "" }) => (
-  <div
-    className={`bg-[#E3F0F2] p-6 sm:p-8 ${className}`}
-  >
-    <p className="font-serif text-xl leading-snug text-[#1F3A44]">
+  <div className={`border border-[#3E8A99]/20 bg-[#E3F0F2] p-6 sm:p-8 ${className}`}>
+    <p className="font-serif text-[1.35rem] leading-snug text-[#1F3A44]">
       Can&rsquo;t find your question?
     </p>
-    <p className="mt-2 text-sm leading-relaxed text-[#5F7780]">
+    <p className="mt-2.5 text-[0.95rem] leading-[1.7] text-[#5F7780]">
       Bring it to the discovery call. It is a twenty-minute, no-pressure
       conversation to see if we are a good fit.
     </p>
     <a
       href="#contact"
-      className="mt-5 inline-flex items-center bg-[#1F3A44] px-6 py-3 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99]"
+      className="mt-6 inline-flex w-full items-center justify-center bg-[#1F3A44] px-6 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] sm:w-auto"
     >
       Book a discovery call
     </a>
@@ -132,16 +127,16 @@ export const Faq: React.FC = () => {
   return (
     <section
       id="faq"
-      className="bg-white border-b border-[#1F3A44]/10 px-5 py-20 sm:px-8 md:py-28"
+      className="border-b border-[#1F3A44]/10 bg-white px-5 py-16 sm:px-8 md:py-24 lg:py-28"
     >
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         {/* Left: heading (sticks while the list scrolls on desktop) */}
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="font-serif text-lg italic text-[#3E8A99]">Questions</p>
-          <h2 className="mt-3 font-serif text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-[#1F3A44] sm:text-[2.7rem] md:text-[3.1rem]">
+          <h2 className="mt-3 font-serif text-[2.2rem] font-normal leading-[1.08] tracking-[-0.02em] text-[#1F3A44] sm:text-[2.7rem] md:text-[3.1rem]">
             If you are wondering.
           </h2>
-          <p className="mt-5 max-w-[38ch] text-base leading-[1.7] text-[#5F7780] sm:text-lg">
+          <p className="mt-4 max-w-[38ch] text-base leading-[1.7] text-[#5F7780] sm:mt-5 sm:text-lg">
             Short, honest answers. Nothing here is a sales pitch.
           </p>
           <AskCard className="mt-10 hidden lg:block" />
@@ -149,10 +144,11 @@ export const Faq: React.FC = () => {
 
         {/* Right: filters + accordion */}
         <div>
+          {/* Filters wrap onto a second line on small screens, so nothing scrolls sideways */}
           <div
-            role="tablist"
+            role="group"
             aria-label="Filter questions by topic"
-            className="-mx-5 mb-6 flex gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+            className="mb-7 flex flex-wrap gap-2"
           >
             {CATEGORIES.map((c) => {
               const active = c === category;
@@ -160,10 +156,9 @@ export const Faq: React.FC = () => {
                 <button
                   key={c}
                   type="button"
-                  role="tab"
-                  aria-selected={active}
+                  aria-pressed={active}
                   onClick={() => selectCategory(c)}
-                  className={`shrink-0 border px-4 py-2 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] ${
+                  className={`border px-4 py-2.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] ${
                     active
                       ? "border-[#3E8A99] bg-[#3E8A99] text-white"
                       : "border-[#1F3A44]/15 bg-white text-[#1F3A44] hover:border-[#3E8A99] hover:bg-[#E3F0F2]"
@@ -175,7 +170,7 @@ export const Faq: React.FC = () => {
             })}
           </div>
 
-          <ul className="space-y-3">
+          <ul className="space-y-3 sm:space-y-3.5">
             {visible.map((item) => {
               const isOpen = openQuestion === item.question;
               const slug = item.question.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
@@ -185,7 +180,7 @@ export const Faq: React.FC = () => {
               return (
                 <li
                   key={item.question}
-                  className={`border transition-all duration-200 motion-reduce:transition-none ${
+                  className={`border transition-colors duration-200 motion-reduce:transition-none ${
                     isOpen
                       ? "border-[#3E8A99]/40 border-l-2 border-l-[#3E8A99] bg-[#F3F9FA]"
                       : "border-[#1F3A44]/10 bg-white hover:border-[#3E8A99]/40"
@@ -198,21 +193,20 @@ export const Faq: React.FC = () => {
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                       onClick={() => setOpenQuestion(isOpen ? null : item.question)}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] sm:px-6 sm:py-5"
+                      className="flex w-full items-center justify-between gap-4 px-5 py-[1.125rem] text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] sm:gap-5 sm:px-6 sm:py-5"
                     >
-                      <span className="font-serif text-[1.15rem] font-normal leading-snug text-[#1F3A44] md:text-[1.3rem]">
+                      <span className="font-serif text-[1.1rem] font-normal leading-[1.35] text-[#1F3A44] md:text-[1.3rem]">
                         {item.question}
                       </span>
+                      {/* Plain chevron on phones, square tile from sm up */}
                       <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center transition-colors ${
-                          isOpen
-                            ? "bg-[#3E8A99] text-white"
-                            : "bg-[#E3F0F2] text-[#3E8A99]"
+                        className={`flex shrink-0 items-center justify-center text-[#3E8A99] transition-colors sm:h-8 sm:w-8 ${
+                          isOpen ? "sm:bg-[#3E8A99] sm:text-white" : "sm:bg-[#E3F0F2]"
                         }`}
                         aria-hidden="true"
                       >
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform duration-200 motion-reduce:transition-none ${
+                          className={`h-5 w-5 transition-transform duration-200 motion-reduce:transition-none sm:h-4 sm:w-4 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                         />
@@ -227,8 +221,12 @@ export const Faq: React.FC = () => {
                       isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
-                    <div className="overflow-hidden">
-                      <p className="max-w-[58ch] px-5 pb-6 text-base leading-[1.75] text-[#5F7780] sm:px-6">
+                    <div
+                      className={`overflow-hidden transition-[visibility] duration-200 ${
+                        isOpen ? "visible" : "invisible"
+                      }`}
+                    >
+                      <p className="max-w-[58ch] px-5 pb-6 text-[0.95rem] leading-[1.8] text-[#5F7780] sm:px-6 sm:pb-7 sm:text-base">
                         {item.answer}
                       </p>
                     </div>
@@ -238,7 +236,7 @@ export const Faq: React.FC = () => {
             })}
           </ul>
 
-          <AskCard className="mt-10 lg:hidden" />
+          <AskCard className="mt-12 lg:hidden" />
         </div>
       </div>
     </section>
