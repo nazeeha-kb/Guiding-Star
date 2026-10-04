@@ -107,14 +107,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setActiveSection(link.href.replace("#", ""))}
-                  className={`relative py-1 transition-colors ${
+                  aria-current={isActive ? "location" : undefined}
+                  className={`group relative py-1 transition-colors ${
                     isActive ? "text-ink" : "text-slate"
                   }`}
                 >
                   <span className="relative z-10">{link.label}</span>
                   <span
-                    className={`absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-[#3E8A99] transition-all duration-200 ${
-                      isActive ? "opacity-100" : "opacity-0"
+                    className={`absolute -bottom-1 left-0 h-[2px] w-full origin-left rounded-full transition-[opacity,transform,background-color] duration-200 motion-reduce:transition-none ${
+                      isActive
+                        ? "scale-x-100 bg-[#3E8A99] opacity-100"
+                        : "scale-x-0 bg-teal/60 opacity-0 group-hover:scale-x-100 group-hover:opacity-100 group-focus-visible:scale-x-100 group-focus-visible:opacity-100"
                     }`}
                     aria-hidden="true"
                   />
@@ -157,17 +160,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                       setMobileMenuOpen(false);
                       setActiveSection(link.href.replace("#", ""));
                     }}
-                    className={`flex items-center justify-between py-3 text-lg transition-colors ${
-                      isActive ? "text-ink" : "text-slate"
+                    aria-current={isActive ? "location" : undefined}
+                    className={`group flex min-h-12 items-center py-3 text-lg transition-colors ${
+                      isActive ? "font-medium text-ink" : "text-slate"
                     }`}
                   >
-                    <span>{link.label}</span>
-                    <span
-                      className={`h-[2px] w-8 rounded-full bg-[#3E8A99] transition-opacity ${
-                        isActive ? "opacity-100" : "opacity-0"
-                      }`}
-                      aria-hidden="true"
-                    />
+                    <span className="relative inline-block">
+                      {link.label}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-[2px] w-full origin-left rounded-full transition-[opacity,transform,background-color] duration-200 motion-reduce:transition-none ${
+                          isActive
+                            ? "scale-x-100 bg-[#3E8A99] opacity-100"
+                            : "scale-x-0 bg-teal/60 opacity-0 group-hover:scale-x-100 group-hover:opacity-100 group-focus-visible:scale-x-100 group-focus-visible:opacity-100"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </span>
                   </a>
                 );
               })}

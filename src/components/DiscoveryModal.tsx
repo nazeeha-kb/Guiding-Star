@@ -28,6 +28,7 @@ const topics = [
 
 const fieldClass =
   "w-full rounded-none border border-[#1F3A44]/20 bg-white px-4 py-3 text-base text-[#1F3A44] transition-colors focus:border-[#3E8A99] focus:outline-none focus:ring-1 focus:ring-[#3E8A99]";
+const textAreaClass = `${fieldClass} min-h-24 resize-y`;
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -37,6 +38,7 @@ function buildWhatsAppUrl(params: {
   email: string;
   topic: string;
   timeZone: string;
+  needs: string;
 }) {
   const topicLabel = topics.find((t) => t.id === params.topic)?.label ?? params.topic;
 
@@ -46,6 +48,7 @@ function buildWhatsAppUrl(params: {
     `Name: ${params.name}`,
     `Email: ${params.email}`,
     `Focus area: ${topicLabel}`,
+    ...(params.needs.trim() ? [`What they'd like help with: ${params.needs.trim()}`] : []),
     `Timezone: ${params.timeZone}`,
   ].join("\n");
 
@@ -57,6 +60,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [timeZone, setTimeZone] = useState("GST");
+  const [needs, setNeeds] = useState("");
   const [booked, setBooked] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
@@ -120,6 +124,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
       setEmail("");
       setSelectedTopic("premarital");
       setTimeZone("GST");
+      setNeeds("");
     }
   }, [isOpen]);
 
@@ -129,7 +134,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
     e.preventDefault();
     if (!name || !email || !agreed) return;
 
-    const url = buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone });
+    const url = buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone, needs });
     window.open(url, "_blank", "noopener,noreferrer");
 
     setBooked(true);
@@ -185,7 +190,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
             <p className="mt-4 max-w-[42ch] text-sm leading-[1.6] text-[#5F7780]">
               Didn&apos;t see the tab open?{" "}
               <a
-                href={buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone })}
+                href={buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone, needs })}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-[#3E8A99] underline underline-offset-4 hover:text-[#1F3A44]"
@@ -244,7 +249,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="modal-name" className="mb-1.5 block text-sm font-medium text-[#1F3A44]">
-                    Name
+                    Name <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
                     ref={firstFieldRef}
@@ -259,7 +264,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
                 </div>
                 <div>
                   <label htmlFor="modal-email" className="mb-1.5 block text-sm font-medium text-[#1F3A44]">
-                    Email
+                    Email <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="modal-email"
@@ -290,6 +295,26 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
                 </div>
               </div>
 
+               <div>
+                <h4 className="mb-2 font-serif text-lg font-normal text-[#1F3A44]">
+                  Tell us a little about your needs
+                </h4>
+                <label
+                  htmlFor="modal-needs"
+                  className="mb-1.5 block text-sm font-medium text-[#1F3A44]"
+                >
+                  What would you like help with? (Optional)
+                </label>
+                <textarea
+                  id="modal-needs"
+                  rows={3}
+                  value={needs}
+                  onChange={(e) => setNeeds(e.target.value)}
+                  className={textAreaClass}
+                />
+              </div>
+
+
               {/* Safety notice */}
               <div
                 className="flex gap-3 border border-[#EBAE95]/60 border-l-2 border-l-[#E4795C] bg-[#FDF6F2] px-4 py-3.5"
@@ -318,7 +343,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
             <div className="shrink-0 border-t border-[#1F3A44]/15 bg-white px-6 py-4 sm:px-9 sm:py-5">
               <button
                 type="submit"
-                disabled={!agreed}
+                disabled={!name.trim() || !email.trim() || !agreed}
                 className="w-full bg-[#1F3A44] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3E8A99] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-[#1F3A44] sm:w-auto"
               >
                 Continue to WhatsApp

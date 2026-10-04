@@ -7,24 +7,24 @@ import React from "react";
 
 const points = [
   {
-    title: "Confidential",
+    title: "Human and non-judgmental",
     description:
-      "A private, one-to-one conversation, held to the International Coaching Federation Code of Ethics.",
+      "We meet you as a whole person, moving at your pace and without judgment or blame.",
   },
   {
     title: "Collaborative and practical",
     description:
-      "We look at what is happening together, then you decide what to do next.",
+      "Together, we make sense of what is happening, notice repeating patterns and find clearer choices and practical next steps.",
   },
   {
-    title: "Grounded in training",
+    title: "Grounded in established approaches",
     description:
-      "The work draws on accredited coaching and counselling psychology.",
+      "Sessions may draw on CBT, REBT, Transactional Analysis and basic NLP to explore communication, reframe thoughts and set goals.",
   },
   {
-    title: "Coaching, not therapy",
+    title: "Coaching with room for faith",
     description:
-      "No diagnosis and no clinical treatment. If something beyond coaching is needed, Aliya will say so.",
+      "The practice is open to everyone, whatever their faith, culture or background. Muslim clients who wish can bring Islamic values and an Islamic psychology perspective into sessions.",
   },
 ];
 
@@ -43,8 +43,9 @@ export const Approach: React.FC = () => {
           </h2>
           <div className="mt-8 h-px w-12 bg-[#3E8A99]" aria-hidden="true" />
           <p className="mt-8 max-w-[32ch] text-base leading-[1.75] text-[#5F7780] sm:text-lg">
-            A focused conversation to understand what is happening, then decide
-            what to do next.
+            Whether you are navigating life, work, relationships or emotional
+            resilience, this is coaching, not therapy. We make space for the
+            whole person and move at your pace.
           </p>
         </div>
 

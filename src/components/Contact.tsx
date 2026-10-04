@@ -19,21 +19,25 @@ interface ContactProps {
   onOpenBooking: () => void;
 }
 
-/* Update these with the final profile URLs if the handles change. */
 const SOCIALS: { label: string; url: string; icon: LucideIcon }[] = [
   {
-    label: "Instagram",
-    url: "https://www.instagram.com/",
+    label: "Instagram: Be with the Change",
+    url: "https://www.instagram.com/be_with_the_change/",
+    icon: Instagram,
+  },
+  {
+    label: "Instagram: Guiding Star Life Coaching",
+    url: "https://www.instagram.com/guidingstar.lifecoaching/",
     icon: Instagram,
   },
   {
     label: "LinkedIn",
-    url: "https://www.linkedin.com/in/aliyapatel",
+    url: "https://www.linkedin.com/in/aliyapatel/",
     icon: Linkedin,
   },
   {
     label: "YouTube",
-    url: "https://www.youtube.com/",
+    url: "https://www.youtube.com/@guidingstar.lifecoaching",
     icon: Youtube,
   },
 ];
