@@ -10,12 +10,21 @@ interface WhoIWorkWithProps {
 }
 
 const groups = [
-  { title: "Career", description: "When work asks a new question of you, or the path you are on no longer fits." },
-  { title: "Family", description: "When the roles you hold at home leave little room for your own voice." },
-  { title: "Relationships", description: "When a partnership, marriage, or a repeating pattern needs honest attention." },
-  { title: "Identity", description: "When who you have been and who you are becoming no longer line up." },
-  { title: "Personal growth", description: "When you want to feel steadier, clearer, and more able to choose." },
-  { title: "Life transitions", description: "When a chapter is ending, or waiting to begin, and the next step is unclear." },
+  {
+    title: "Personal",
+    description:
+      "Understand what you are feeling, manage emotions with more care, and make room for personal growth and clearer choices.",
+  },
+  {
+    title: "Relationships",
+    description:
+      "Build resilience and emotional clarity, respond with intention, and strengthen the relationships that matter to you.",
+  },
+  {
+    title: "Family and life changes",
+    description:
+      "Navigate family roles, relationship shifts, and changes in study or work while staying connected to your own needs.",
+  },
 ];
 
 export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({ onOpenBooking }) => {
@@ -29,12 +38,12 @@ export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({ onOpenBooking }) => 
         <div>
           <p className="font-serif text-lg italic text-[#3E8A99]">Who this is for</p>
           <h2 className="mt-4 max-w-[14ch] font-serif text-[2.4rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[3rem] md:text-[3.5rem]">
-            When life looks fine from the outside.
+            Youth and women
           </h2>
           <p className="mt-6 max-w-[36ch] text-base leading-[1.75] text-[#5F7780] sm:text-lg">
-            And something in you knows it is not. Women in the middle of
-            career, family, relationships, identity, study, and change. You do
-            not need a tidy question before you write.
+            For youth and women navigating relationships, identity, family,
+            study, work, and change. You do not need a tidy question before you
+            write.
           </p>
 
           <div className="relative mt-12 max-w-[22rem] sm:max-w-[26rem] lg:mt-14 lg:max-w-none">

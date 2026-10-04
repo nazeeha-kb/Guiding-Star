@@ -25,10 +25,10 @@ export const Hero: React.FC<HeroProps> = ({ onBeginJourney }) => {
                 Guiding Star
               </p>
               <h1 className="max-w-[12ch] font-serif text-[2.15rem] font-normal leading-[0.98] tracking-[-0.02em] text-ink sm:text-[2.55rem] md:text-[2.85rem] lg:text-[3.35rem]">
-                Clarity for what comes next.
+                For young adults and women finding their way.
               </h1>
               <p className="mt-4 max-w-[34ch] text-[0.9875rem] leading-[1.65] text-slate sm:mt-5 sm:text-base md:mt-6 md:text-lg">
-                Private coaching for women standing at a crossroads in work, family, or self.
+                People development and mentoring for young adults and women navigating relationships, identity, family, and change.
               </p>
               <p className="mt-3 font-serif italic text-base text-ink">
                 Be with the change.

@@ -14,7 +14,7 @@
 - [x] The About section introduces Aliya as the founder of Guiding Star Life Coaching & Mentoring Consultancy.
 - [x] Her story says she returned to study at **38**.
 - [x] Aliya’s portrait is shown with her International Coaching Federation (ICF) PCC credential.
-- [x] The page includes the quote **“One can edit a page, one cannot edit a blank,”** credited to Judy Becault.
+- [x] The page includes the quote **“One can edit a page, one cannot edit a blank,”** credited to Jody Becault.
 - [x] A dedicated Credentials section highlights her ICF PCC credential, mentoring and education qualifications, counselling-related training, professional affiliations, and recognition.
 
 ### Support, coaching, and FAQs

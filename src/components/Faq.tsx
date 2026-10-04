@@ -21,13 +21,13 @@ const faqs: FaqItem[] = [
     category: "About Aliya",
     question: "Who am I?",
     answer:
-      "Aliya Patel is the founder of Guiding Star Life Coaching & Mentoring Consultancy. She is a PCC coach with the International Coaching Federation and supports women navigating change in work, family, relationships, and self.",
+      "Aliya Patel is the founder of Guiding Star Life Coaching & Mentoring Consultancy. She holds a PCC credential through the International Coaching Federation and supports youth and women navigating change in work, family, relationships, and personal development.",
   },
   {
     category: "About Aliya",
     question: "What are your credentials?",
     answer:
-      "Aliya holds a PCC credential through the ICF, has counselling psychology training, a diploma in integrated counselling psychology, and certified Islamic marriage counselling training. She also brings educational and mentoring experience from professional practice and community work.",
+      "Aliya holds a PCC credential through the ICF and a PG in Counselling Psychology, along with a Diploma in Integrated Counselling Psychology. Her certifications include Certified Islamic Counselor (Levels 1 & 2), Certified Islamic Marriage Counselor (Level 1), Certified NLP Practitioner, and Certified Transactional Analysis 101. She supports youth and women navigating change.",
   },
   {
     category: "Coaching",
@@ -49,15 +49,21 @@ const faqs: FaqItem[] = [
   },
   {
     category: "Coaching",
+    question: "What methods may inform your work?",
+    answer:
+      "Depending on your goals, sessions may draw on CBT, REBT, Transactional Analysis, and basic NLP. These frameworks can support reflection on thought patterns, communication, and practical next steps; the methods used are shaped around your needs.",
+  },
+  {
+    category: "Coaching",
     question: "Do you offer faith-based coaching?",
     answer:
       "Yes. Faith can be woven into the process naturally, especially when it supports your decision-making, values, and sense of purpose. The work remains practical and grounded in your real life.",
   },
   {
     category: "Sessions",
-    question: "How long is a session and how often do we meet?",
+    question: "How long is a session?",
     answer:
-      "Sessions are online and are typically one hour long. Most clients meet every one to two weeks, with a gap of 8 to 12 days between sessions depending on the pace of the work and what feels supportive.",
+      "Sessions are online and are typically one hour long.",
   },
   {
     category: "Sessions",

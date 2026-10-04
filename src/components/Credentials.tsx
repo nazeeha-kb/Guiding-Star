@@ -116,6 +116,10 @@ export const Credentials: React.FC = () => {
                 title="KHDA-Certified Educator"
                 sub="Dubai Knowledge and Human Development Authority"
               />
+              <Entry
+                title="International Career Counsellors Club"
+                sub="Member ID: ICMIEIN2309337"
+              />
             </Entries>
           </Tile>
 
@@ -124,15 +128,26 @@ export const Credentials: React.FC = () => {
             <Entries>
               <Entry title="Post-graduate counselling psychology" />
               <Entry title="Diploma in Integrated Counselling Psychology" />
-              <Entry title="Certified Islamic marriage counselling" />
-              <Entry title="NLP and Transactional Analysis" />
+              <Entry title="Certified Islamic Counselor (Levels 1 & 2)" />
+              <Entry title="Certified Islamic Marriage Counselor (Level 1)" />
+              <Entry title="Certified NLP Practitioner" />
+              <Entry title="Certified Transactional Analysis 101" />
             </Entries>
           </Tile>
 
           {/* 4. Practice */}
           <Tile label="Trusted By" icon={Briefcase} className="md:col-span-2 lg:col-span-4">
             <p className="mt-5 font-serif text-[1.3rem] font-normal leading-[1.5] text-[#1F3A44]">
-              BetterUp, TaskHuman, Mindtales, My Muslim Mentor, and Guiding Star.
+              BetterUp, TaskHuman, Mindtales, My Muslim Mentors,{" "}
+              <a
+                href="https://megaglobalcoaches.com/Aliya.Patel"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-[#3E8A99]/50 underline-offset-4 hover:text-[#3E8A99]"
+              >
+                Mega Global Coaches
+              </a>
+              , and Master X Global Summit 2025.
             </p>
           </Tile>
 
@@ -146,11 +161,10 @@ export const Credentials: React.FC = () => {
               <Entries>
                 <Entry title="Association of Muslim Professionals" />
                 <Entry title="NOVABLISS Education Welfare Social Trust" />
-                <Entry title="Antarang Foundation" />
               </Entries>
               <Entries>
-                <Entry title="Master X Global Summit 2025" />
-                <Entry title="People Development Ambassador representing India" />
+                <Entry title="Antarang Foundation" />
+                <Entry title="Freedom Employment Mentoring in Community" />
               </Entries>
             </div>
           </Tile>

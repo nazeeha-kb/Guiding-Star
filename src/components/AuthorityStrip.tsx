@@ -68,7 +68,7 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { numeric: 12, suffix: "+ years", label: "in people development and coaching" },
+  { numeric: 12, suffix: "+ years", label: "in people development and mentoring" },
   { numeric: 1500, suffix: "+", label: "private one-to-one sessions" },
   { numeric: 300, suffix: "+", label: "people supported during the pandemic" },
   { numeric: 24, suffix: "+", label: "certifications, memberships, and qualifications" },
@@ -104,8 +104,9 @@ export const AuthorityStrip: React.FC = () => {
             Years of sitting with people at the hard bits.
           </h2>
           <p className="max-w-[38ch] text-base leading-[1.75] text-[#5F7780]">
-            Aliya Patel is a Professional Certified Coach (PCC) with the
-            International Coaching Federation.
+            Aliya Patel brings 12+ years of experience in people development
+            and mentoring, alongside her PCC credential with the International
+            Coaching Federation.
           </p>
         </div>
 

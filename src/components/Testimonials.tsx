@@ -26,16 +26,16 @@ export const Testimonials: React.FC = () => {
       id: 1,
       quote:
         "I came to this workshop expecting a checklist for marriage. I left with a mirror. I learned to pause instead of react, to choose connection over correction. This wasn't pre-marriage counseling, it was pre-life counseling.",
-      author: "Rumaisa Nazir",
-      context: "Pre-Marital Coaching Participant",
+      author: "Rumaisa",
+      context: "2026",
       category: "Relationships & Self-Awareness",
     },
     {
       id: 2,
       quote:
         "I'm feeling really great, happy, and having fun in life. Even my health improved within days. Your words when we spoke made me really change my way. It was deep and impactful, though it hurt me at first to hear.",
-      author: "Zohra Altaf",
-      context: "Mississauga, Ontario · 1:1 Coaching",
+      author: "Zohra",
+      context: "2020",
       category: "Emotional Wellbeing",
     },
     {
@@ -43,7 +43,7 @@ export const Testimonials: React.FC = () => {
       quote:
         "I learnt so much about emotional patterns, communication, compatibility, and breaking unrealistic expectations. It gave me real direction and self-awareness I didn't have before.",
       author: "Anonymous",
-      context: "Pre-Marital Workshop Participant",
+      context: "Pre-Marital Workshop Participant · 2026",
       category: "Relationships & Communication",
     },
     {
@@ -51,7 +51,7 @@ export const Testimonials: React.FC = () => {
       quote:
         "She was the one who helped me get out of the trauma I was in. She's empathetic enough to truly understand what you're going through. By the grace of God, I started healing within weeks.",
       author: "Anonymous",
-      context: "Instagram Community Member",
+      context: "Instagram Community Member · 2021",
       category: "Healing & Emotional Recovery",
     },
     {
@@ -59,7 +59,7 @@ export const Testimonials: React.FC = () => {
       quote:
         "After a lot of apprehension, I finally gathered the courage to reach out, and you are truly a blessing. Your words are like an invisible hug that made me feel like someone finally has my back.",
       author: "Anonymous",
-      context: "Private Coaching Client",
+      context: "Private Coaching Client · 2022",
       category: "Emotional Support",
     },
     {
@@ -83,7 +83,7 @@ export const Testimonials: React.FC = () => {
       quote:
         "Aliya has been an invaluable member of the AIM community. Her passion and enthusiasm for supporting others, especially young people, on their life and career journey through mentoring and coaching shines through.",
       author: "Yen-Lu Chow",
-      context: "Executive Chairman, WholeTree Foundation · AIM Community",
+      context: "Executive Chairman, WholeTree Foundation · AIM Community · 2023",
       category: "Mentoring & Professional Impact",
     },
     {
