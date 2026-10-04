@@ -36,6 +36,7 @@ const FOCUSABLE =
 function buildWhatsAppUrl(params: {
   name: string;
   email: string;
+  age: string;
   topic: string;
   timeZone: string;
   needs: string;
@@ -47,6 +48,7 @@ function buildWhatsAppUrl(params: {
     ``,
     `Name: ${params.name}`,
     `Email: ${params.email}`,
+    `Age: ${params.age.trim()}`,
     `Focus area: ${topicLabel}`,
     ...(params.needs.trim() ? [`What they'd like help with: ${params.needs.trim()}`] : []),
     `Timezone: ${params.timeZone}`,
@@ -59,6 +61,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
   const [selectedTopic, setSelectedTopic] = useState("premarital");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
   const [timeZone, setTimeZone] = useState("GST");
   const [needs, setNeeds] = useState("");
   const [booked, setBooked] = useState(false);
@@ -122,6 +125,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
       setAgreed(false);
       setName("");
       setEmail("");
+      setAge("");
       setSelectedTopic("premarital");
       setTimeZone("GST");
       setNeeds("");
@@ -132,9 +136,9 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !agreed) return;
+    if (!name || !email || !age || !agreed) return;
 
-    const url = buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone, needs });
+    const url = buildWhatsAppUrl({ name, email, age, topic: selectedTopic, timeZone, needs });
     window.open(url, "_blank", "noopener,noreferrer");
 
     setBooked(true);
@@ -190,7 +194,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
             <p className="mt-4 max-w-[42ch] text-sm leading-[1.6] text-[#5F7780]">
               Didn&apos;t see the tab open?{" "}
               <a
-                href={buildWhatsAppUrl({ name, email, topic: selectedTopic, timeZone, needs })}
+                href={buildWhatsAppUrl({ name, email, age, topic: selectedTopic, timeZone, needs })}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-[#3E8A99] underline underline-offset-4 hover:text-[#1F3A44]"
@@ -276,7 +280,24 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
                     className={fieldClass}
                   />
                 </div>
-                <div className="sm:col-span-2">
+                <div>
+                  <label htmlFor="modal-age" className="mb-1.5 block text-sm font-medium text-[#1F3A44]">
+                    Age <span className="text-red-600" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id="modal-age"
+                    type="number"
+                    min="1"
+                    max="120"
+                    step="1"
+                    inputMode="numeric"
+                    required
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className={fieldClass}
+                  />
+                </div>
+                <div>
                   <label htmlFor="modal-tz" className="mb-1.5 block text-sm font-medium text-[#1F3A44]">
                     Timezone
                   </label>
@@ -343,7 +364,7 @@ export const DiscoveryModal: React.FC<DiscoveryModalProps> = ({ isOpen, onClose 
             <div className="shrink-0 border-t border-[#1F3A44]/15 bg-white px-6 py-4 sm:px-9 sm:py-5">
               <button
                 type="submit"
-                disabled={!name.trim() || !email.trim() || !agreed}
+                disabled={!name.trim() || !email.trim() || !age || !agreed}
                 className="w-full bg-[#1F3A44] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3E8A99] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-[#1F3A44] sm:w-auto"
               >
                 Continue to WhatsApp

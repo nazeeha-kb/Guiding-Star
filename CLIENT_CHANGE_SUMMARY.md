@@ -1,121 +1,60 @@
-# Guiding Star Website Update – Client-Friendly Summary
+# Guiding Star Website Update
 
-This document explains the changes made to the website in simple, client-friendly language. It is written for easy sharing with the client and focuses on what was improved, why it matters, and how the website now feels for visitors.
+## What is now on the website
 
----
+### First impression and brand
 
-## Overview
+- [x] The home page opens with a welcoming image of women wearing hijabs.
+- [x] The main message is **“Clarity for what comes next.”**
+- [x] The brand tagline **“Be with the change”** is included.
+- [x] Visitors can start a discovery-call request from the home page.
 
-The website was redesigned to feel more personal, warm, and trustworthy. It now clearly presents the brand, explains the services, builds confidence through real-life storytelling, and makes it easy for people to take the next step by booking a discovery call.
+### Aliya’s story and credentials
 
-Instead of looking like a basic brochure page, the site now feels like a polished and professional coaching brand.
+- [x] The About section introduces Aliya as the founder of Guiding Star Life Coaching & Mentoring Consultancy.
+- [x] Her story says she returned to study at **38**.
+- [x] Aliya’s portrait is shown with her International Coaching Federation (ICF) PCC credential.
+- [x] The page includes the quote **“One can edit a page, one cannot edit a blank,”** credited to Judy Becault.
+- [x] A dedicated Credentials section highlights her ICF PCC credential, mentoring and education qualifications, counselling-related training, professional affiliations, and recognition.
 
----
+### Support, coaching, and FAQs
 
-## What was improved
+- [x] Visitors can see the areas Aliya supports, including career, family, relationships, identity, personal growth, and life transitions.
+- [x] The booking form offers matching focus areas, such as career guidance, career transitions, student mentoring, relationship coaching, and personal growth.
+- [x] A dedicated Approach section explains how coaching works.
+- [x] The FAQ section answers common questions about Aliya, coaching, sessions, faith, and confidentiality.
 
-### 1) Stronger first impression
+### Trust and testimonials
 
-The homepage now opens with:
-- a clear brand name and message
-- a welcoming visual background
-- a compelling headline: “Clarity for what comes next.”
-- a simple call-to-action button to book a discovery call
+- [x] Credentials, professional experience, affiliations, community work, and recognition are presented on the site.
+- [x] The testimonials section includes client feedback and a professional endorsement that identifies an executive chairman.
+- [x] A small initial or symbol appears beside each testimonial. Names are kept private where needed.
+- [x] Contact details and social links are available, including LinkedIn.
 
-This makes the first impression stronger and helps visitors immediately understand what the business is about.
+### Booking and contact
 
-### 2) Clear brand story
+- [x] The discovery-call form lets a visitor choose a focus area and enter their name, email, age, timezone, and optional note.
+- [x] Submitting the booking form opens WhatsApp with the enquiry details already filled in. The visitor reviews and sends the message.
+- [x] The form displays a safety notice that coaching is **not a suicide hotline** and advises people needing urgent help to contact local emergency or crisis services.
 
-The “About” section was built to explain who the founder is and why the brand exists. It shares:
-- the founder’s personal background and journey
-- the reason behind the coaching work
-- the confidence and experience behind the service
+### Official business details
 
-This helps visitors connect emotionally with the brand and understand the values behind it.
+- [x] The footer displays the Udyam registration number currently provided, Aliya’s key credentials, and the year Guiding Star began.
 
-### 3) Better service clarity
+## Contact follow-up and items still to set up
 
-The website now clearly explains the areas of support, including:
-- relationships and premarital coaching
-- career guidance and transitions
-- mentoring for students and women
-- personal growth and life transitions
+- [ ] **Automatic WhatsApp reply:** The website now directs booking enquiries to WhatsApp with the key details pre-filled, helping keep the first contact quick. An automatic “thank you for your message” reply, asking for any extra information before the call, still needs to be set up in WhatsApp Business (or another chosen messaging service). Any extra questions can be asked in that follow-up rather than adding a long list to the website form.
+- [ ] **Email form delivery:** The contact form is not yet connected to Aliya’s email through Formspree. This needs a Formspree account/form endpoint and Aliya’s confirmation of the destination email before submissions can be delivered there.
 
-These services are presented in an easy-to-understand way so visitors can quickly see whether the offering matches their needs.
+## Decisions and information needed from Aliya
 
-### 4) A more professional and trustworthy feel
+- [ ] Confirm whether to keep the separate Credentials section alongside the About and authority sections, or simplify the page by combining some of this information.
+- [ ] Confirm whether to keep the dedicated Approach section as well as the FAQs, or explain more of the coaching approach within the FAQs.
+- [ ] Confirm the Udyam registration number and provide any additional official business details approved for publication, such as the exact registered name or other registration numbers.
+- [ ] Share the exact wording and approved logos for any further qualifications, licences, awards, accreditations, company affiliations, or NGO work to feature.
+- [ ] Share any additional testimonial wording, the preferred name and job title, and permission to publish. Please also provide an approved photo if a real face photo is preferred; the current site uses initials or symbols.
+- [ ] Provide any other details Aliya would like included. These can be collected privately and should only be shown on the website if she approves them.
 
-Several trust-building sections were added, including:
-- credentials and professional background
-- testimonials and client stories
-- FAQs to answer common questions
-- clear values and approach to coaching
+## Short summary
 
-This gives visitors more confidence and helps reduce hesitation before reaching out.
-
-### 5) Easier visitor journey
-
-The website was improved so visitors can move through the page naturally:
-- navigation is clear and simple
-- each section leads users to the next step
-- buttons encourage action
-- the booking flow is simple and straightforward
-
-The goal is to make it easy for a potential client to understand the service and reach out without confusion.
-
-### 6) Booking and contact flow
-
-A discovery call booking flow was added so visitors can:
-- select a topic they need help with
-- enter their name and email
-- choose their timezone
-- send their request through WhatsApp
-
-This makes it much easier for leads to connect with the coach without needing a complicated process.
-
-### 7) Mobile-friendly experience
-
-The layout was adjusted to work well on phones and tablets. This includes:
-- mobile-friendly navigation
-- responsive page structure
-- better readability on smaller screens
-- a cleaner experience for visitors browsing on mobile devices
-
-This is important because a large number of visitors access websites from their phones.
-
-### 8) Improved visual design
-
-The overall design now has a calmer and more premium look, with:
-- soft color palette
-- clean spacing
-- elegant typography
-- consistent section layouts
-- thoughtful use of imagery and branding
-
-This creates a more refined and professional identity for the business.
-
----
-
-## What this means for the client
-
-This update helps the business in several practical ways:
-
-- It gives the brand a more serious and polished online presence.
-- It makes the service easier to understand for new visitors.
-- It creates more trust and credibility.
-- It gives the business a cleaner way to attract and convert leads.
-- It helps users take action quickly through booking or contact forms.
-
-In simple terms, the website now does a much better job of explaining the business and helping people take the next step.
-
----
-
-## Summary in one sentence
-
-The website was transformed from a simple informational page into a warm, clear, and professional coaching platform that is easier to trust, easier to navigate, and easier for clients to contact.
-
----
-
-## Suggested client-facing closing note
-
-We are pleased to share the updated website for Guiding Star, which has been refined to better reflect the brand’s values, improve clarity of services, and create a smoother journey for prospective clients. The new direction is designed to feel personal, supportive, and professionally credible while making it easier for people to connect and begin their coaching journey.
+The website now presents Aliya’s story, services, credentials, testimonials, FAQs, and booking option in one place. A visitor can send a discovery-call enquiry through WhatsApp without first having to visit LinkedIn. The WhatsApp automatic reply and Formspree email delivery are follow-up setup items, not features that are currently live.
