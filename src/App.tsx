@@ -38,11 +38,15 @@ export default function App() {
         <Hero onBeginJourney={handleOpenBooking} />
 
         <RevealOnScroll>
-          <WhoIWorkWith onOpenBooking={handleOpenBooking} />
+          <AuthorityStrip />
+        </RevealOnScroll>
+        
+        <RevealOnScroll>
+          <About onOpenBooking={handleOpenBooking} />
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <Offerings onOpenBooking={handleOpenBooking} />
+          <WhoIWorkWith onOpenBooking={handleOpenBooking} />
         </RevealOnScroll>
 
         <RevealOnScroll>
@@ -50,11 +54,7 @@ export default function App() {
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <About onOpenBooking={handleOpenBooking} />
-        </RevealOnScroll>
-
-        <RevealOnScroll>
-          <AuthorityStrip />
+          <Offerings onOpenBooking={handleOpenBooking} />
         </RevealOnScroll>
 
         <RevealOnScroll>
