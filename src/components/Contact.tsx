@@ -89,7 +89,9 @@ export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="max-w-2xl">
-          <p className="font-serif text-lg italic text-[#3E8A99]">Contact</p>
+          <p className="font-serif text-lg italic text-[#3E8A99]">
+            Contact
+          </p>
           <h2 className="mt-3 font-serif text-[2.15rem] font-normal leading-[1.08] tracking-[-0.02em] text-[#1F3A44] sm:text-[2.7rem] md:text-[3.1rem]">
             Start here.
           </h2>

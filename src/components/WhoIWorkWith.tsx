@@ -13,7 +13,7 @@ const groups = [
   {
     title: "Personal",
     description:
-      "Understand what you are feeling, manage emotions with more care, and make room for personal growth and clearer choices.",
+      "Understand your emotions, navigate them with greater care, and create space for personal growth, clarity, and more intentional choices.",
   },
   {
     title: "Relationships",
@@ -23,20 +23,24 @@ const groups = [
   {
     title: "Family and life changes",
     description:
-      "Navigate family roles, relationship shifts, and changes in study or work while staying connected to your own needs.",
+      "Navigate family roles, relationship shifts, and life transitions while adapting emotionally and growing through change.",
   },
 ];
 
-export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({ onOpenBooking }) => {
+export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({
+  onOpenBooking,
+}) => {
   return (
     <section
       id="who-this-is-for"
       className="overflow-hidden border-t border-[#1F3A44]/10 bg-white px-5 py-20 sm:px-8 md:py-28 lg:py-32"
     >
-      <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+      <div className="mx-auto grid max-w-6xl items-start gap-12 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:gap-20">
         {/* Left: statement + image */}
         <div>
-          <p className="font-serif text-lg italic text-[#3E8A99]">Who this is for</p>
+          <p className="font-serif text-lg italic text-[#3E8A99]">
+            Who this is for
+          </p>
           <h2 className="mt-4 max-w-[14ch] font-serif text-[2.4rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[3rem] md:text-[3.5rem]">
             Youth and women
           </h2>
@@ -46,7 +50,7 @@ export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({ onOpenBooking }) => 
             write.
           </p>
 
-          <div className="relative mt-12 max-w-[22rem] sm:max-w-[26rem] lg:mt-14 lg:max-w-none">
+          <div className="relative mt-12 max-w-[22rem] sm:max-w-[26rem] xl:mt-14 xl:max-w-none">
             <div
               className="absolute inset-0 translate-x-3 translate-y-3 border border-[#3E8A99]/40"
               aria-hidden="true"
@@ -69,7 +73,7 @@ export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({ onOpenBooking }) => 
             {groups.map((item) => (
               <li
                 key={item.title}
-                className="-mx-4 grid gap-2 border-b border-[#1F3A44]/15 px-4 py-6 transition-colors duration-200 hover:bg-[#F3F9FA] motion-reduce:transition-none sm:grid-cols-[11rem_1fr] sm:gap-8 sm:py-8"
+                className="-mx-4 grid gap-2 border-b border-[#1F3A44]/15 px-4 py-6 transition-colors duration-200 hover:bg-[#F3F9FA] motion-reduce:transition-none md:grid-cols-[11rem_1fr] md:gap-8 md:py-8"
               >
                 <h3 className="font-serif text-[1.5rem] font-normal leading-tight text-[#1F3A44] md:text-[1.6rem]">
                   {item.title}

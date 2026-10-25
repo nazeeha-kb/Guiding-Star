@@ -41,24 +41,24 @@ export const Testimonials: React.FC = () => {
     {
       id: 8,
       quote:
-        "I learnt so much about emotional patterns, communication, compatibility, and breaking unrealistic expectations. It gave me real direction and self-awareness I didn't have before.",
-      author: "Anonymous",
-      context: "Pre-Marital Workshop Participant · 2026",
-      category: "Relationships & Communication",
+        "I was coached by Aliya through reciprocal coaching . She is very empathetic and skilled listener .During this one hour and because of Aliya deep questions , I was able to shift my thinking and the situation to different angle where I never thought about it before . I highly recommend Aliya as a coach and specifically as life coach.",
+      author: "Fayza Sadik",
+      context: "2020",
+      category: "Emotional Healing",
     },
     {
       id: 9,
       quote:
-        "She was the one who helped me get out of the trauma I was in. She's empathetic enough to truly understand what you're going through. By the grace of God, I started healing within weeks.",
-      author: "Anonymous",
-      context: "Instagram Community Member · 2021",
-      category: "Healing & Emotional Recovery",
+        "It was a wonderful experience with Mrs.Alia Patel !.. She helped me to understand what exactly Life is all about and helped me with the solutions to live a good and a stress-free life . I would be happy to again  have a session with her next time. Thankyou so much ma'am 😇!",
+      author: "Aishwariya Menon",
+      context: "Human Resource Associate · 2020",
+      category: "Emotional Clarity",
     },
     {
       id: 10,
       quote:
-        "After a lot of apprehension, I finally gathered the courage to reach out, and you are truly a blessing. Your words are like an invisible hug that made me feel like someone finally has my back.",
-      author: "Anonymous",
+        "Before these sessions I kept my deepest thoughts entirely to myself. Having a space where I don't have to filter or protect anyone else's feelings or worry if I'm being annoying or a burden has given me room to actually process things. That's why I don't have any critiques... the consistency, the comfort, and the way you hold space are doing exactly what I needed. I can actively feel a shift in myself and my healing, and that gives me a lot of hope.",
+      author: "Dr. S Javed",
       context: "Private Coaching Client · 2022",
       category: "Emotional Support",
     },
@@ -83,7 +83,8 @@ export const Testimonials: React.FC = () => {
       quote:
         "Aliya has been an invaluable member of the AIM community. Her passion and enthusiasm for supporting others, especially young people, on their life and career journey through mentoring and coaching shines through.",
       author: "Yen-Lu Chow",
-      context: "Executive Chairman, WholeTree Foundation · AIM Community · 2023",
+      context:
+        "Executive Chairman, WholeTree Foundation · AIM Community · 2023",
       category: "Mentoring & Professional Impact",
     },
     {
@@ -129,7 +130,8 @@ export const Testimonials: React.FC = () => {
   };
 
   const current = testimonials[currentIndex];
-  const initial = current.author === "Anonymous" ? "♡" : current.author.charAt(0);
+  const initial =
+    current.author === "Anonymous" ? "♡" : current.author.charAt(0);
 
   return (
     <section
@@ -176,7 +178,9 @@ export const Testimonials: React.FC = () => {
                 key={t.id}
                 aria-hidden={i !== currentIndex}
                 className={`col-start-1 row-start-1 font-serif text-[1.15rem] italic leading-[1.65] text-[#1F3A44] transition-opacity duration-300 motion-reduce:transition-none sm:text-2xl sm:leading-[1.6] md:text-[1.7rem] ${
-                  i === currentIndex ? "opacity-100" : "pointer-events-none opacity-0"
+                  i === currentIndex
+                    ? "opacity-100"
+                    : "pointer-events-none opacity-0"
                 }`}
               >
                 {t.quote}

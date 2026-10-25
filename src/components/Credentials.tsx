@@ -75,7 +75,9 @@ export const Credentials: React.FC = () => {
         {/* Header */}
         <div className="grid items-end gap-5 lg:grid-cols-2 lg:gap-14">
           <div>
-            <p className="font-serif text-lg italic text-[#3E8A99]">Credentials</p>
+            <p className="font-serif text-lg italic text-[#3E8A99]">
+              Credentials
+            </p>
             <h2 className="mt-2 font-serif text-[2.2rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[2.7rem]">
               Credentials and experience
             </h2>
@@ -130,7 +132,7 @@ export const Credentials: React.FC = () => {
               <Entry title="Diploma in Integrated Counselling Psychology" />
               <Entry title="Certified Islamic Counselor (Levels 1 & 2)" />
               <Entry title="Certified Islamic Marriage Counselor (Level 1)" />
-              <Entry title="Certified NLP Practitioner" />
+              <Entry title="Certified Neuro-Linguistic Programming (NLP) Practitioner" />
               <Entry title="Certified Transactional Analysis 101" />
             </Entries>
           </Tile>

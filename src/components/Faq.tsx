@@ -27,7 +27,7 @@ const faqs: FaqItem[] = [
     category: "About Aliya",
     question: "What are your credentials?",
     answer:
-      "Aliya holds a PCC credential through the ICF and a PG in Counselling Psychology, along with a Diploma in Integrated Counselling Psychology. Her certifications include Certified Islamic Counselor (Levels 1 & 2), Certified Islamic Marriage Counselor (Level 1), Certified NLP Practitioner, and Certified Transactional Analysis 101. She supports youth and women navigating change.",
+      "Aliya holds a PCC credential through the ICF and a PG in Counselling Psychology, along with a Diploma in Integrated Counselling Psychology. Her certifications include Certified Islamic Counselor (Levels 1 & 2), Certified Islamic Marriage Counselor (Level 1), Certified Neuro-Linguistic Programming (NLP) Practitioner, and Certified Transactional Analysis 101. She supports youth and women navigating change.",
   },
   {
     category: "Coaching",
@@ -51,7 +51,7 @@ const faqs: FaqItem[] = [
     category: "Coaching",
     question: "What methods may inform your work?",
     answer:
-      "Depending on your goals, sessions may draw on CBT, REBT, Transactional Analysis, and basic NLP. These frameworks can support reflection on thought patterns, communication, and practical next steps; the methods used are shaped around your needs.",
+      "Depending on your goals, sessions may draw on Cognitive Behavioural Therapy (CBT), Rational Emotive Behaviour Therapy (REBT), Transactional Analysis (TA), and Neuro-Linguistic Programming (NLP). These approaches can help you notice and reframe thought patterns, understand communication and relationship dynamics, and identify practical next steps. The methods used are shaped around your needs.",
   },
   {
     category: "Coaching",
@@ -126,7 +126,9 @@ export const Faq: React.FC = () => {
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         {/* Left: heading (sticks while the list scrolls on desktop) */}
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="font-serif text-lg italic text-[#3E8A99]">Questions</p>
+          <p className="font-serif text-lg italic text-[#3E8A99]">
+            Questions
+          </p>
           <h2 className="mt-3 font-serif text-[2.2rem] font-normal leading-[1.08] tracking-[-0.02em] text-[#1F3A44] sm:text-[2.7rem] md:text-[3.1rem]">
             If you are wondering.
           </h2>

@@ -78,7 +78,9 @@ export const Offerings: React.FC<OfferingsProps> = ({ onOpenBooking }) => {
         {/* Header */}
         <div className="grid items-end gap-5 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
           <div>
-            <p className="font-serif text-lg italic text-[#3E8A99]">What we can work on</p>
+            <p className="font-serif text-lg italic text-[#3E8A99]">
+              What we can work on
+            </p>
             <h2 className="mt-3 max-w-[18ch] font-serif text-[2.2rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[3rem] md:text-[3.5rem]">
               The chapters people actually bring.
             </h2>

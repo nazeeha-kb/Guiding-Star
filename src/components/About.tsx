@@ -72,10 +72,10 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
               and mentoring.
             </p>
             <p>
-              She now works with youth, women, and people moving through
+              She now works with young adults and women, who are in the middle of
               personal development, relationship challenges, and life
-              transitions. She has coached through BetterUp and currently works
-              with My Muslim Mentors, TaskHuman, and Mindtales.
+              transitions. She has coached through renowned companies like BetterUp, My Muslim Mentors and currently works
+              at Khidma, TaskHuman, and Mindtales.
             </p>
           </div>
 
@@ -86,7 +86,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
             <p className="font-serif text-[1.5rem] italic leading-[1.35] text-[#1F3A44] sm:text-[1.75rem]">
               &ldquo;One can edit a page, one cannot edit a blank.&rdquo;
             </p>
-            <footer className="mt-3 text-sm text-[#5F7780]">Jody Becault</footer>
+            <footer className="mt-3 text-sm text-[#5F7780]">Jodi Picoult</footer>
           </blockquote>
 
           <button

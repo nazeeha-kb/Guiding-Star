@@ -19,7 +19,7 @@ const points = [
   {
     title: "Grounded in established approaches",
     description:
-      "Sessions may draw on CBT, REBT, Transactional Analysis and basic NLP to explore communication, reframe thoughts and set goals.",
+      "Sessions may draw on Cognitive Behavioural Therapy, Rational Emotive Behaviour Therapy, Transactional Analysis, and Neuro-Linguistic Programming to explore communication, reframe thoughts, and set goals.",
   },
   {
     title: "Coaching with room for faith",
@@ -37,7 +37,9 @@ export const Approach: React.FC = () => {
       <div className="mx-auto grid max-w-6xl items-start gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
         {/* Left: brief */}
         <div className="lg:sticky lg:top-28">
-          <p className="font-serif text-lg italic text-[#3E8A99]">Approach</p>
+          <p className="font-serif text-lg italic text-[#3E8A99]">
+            Approach
+          </p>
           <h2 className="mt-4 max-w-[12ch] font-serif text-[2.4rem] font-normal leading-[1.05] tracking-[-0.025em] text-[#1F3A44] sm:text-[3rem] md:text-[3.5rem]">
             How the work happens
           </h2>
