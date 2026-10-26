@@ -46,7 +46,7 @@ export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({
           </h2>
           <p className="mt-6 max-w-[36ch] text-base leading-[1.75] text-[#5F7780] sm:text-lg">
             For youth and women navigating relationships, identity, family,
-            study, work, and change. You do not need a tidy question before you
+            career, work, and self-developement. You do not need a tidy question before you
             write.
           </p>
 

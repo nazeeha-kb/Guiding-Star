@@ -59,7 +59,7 @@ export const Testimonials: React.FC = () => {
       quote:
         "Before these sessions I kept my deepest thoughts entirely to myself. Having a space where I don't have to filter or protect anyone else's feelings or worry if I'm being annoying or a burden has given me room to actually process things. That's why I don't have any critiques... the consistency, the comfort, and the way you hold space are doing exactly what I needed. I can actively feel a shift in myself and my healing, and that gives me a lot of hope.",
       author: "Dr. S Javed",
-      context: "Private Coaching Client · 2022",
+      context: "Private Coaching Client · 2025",
       category: "Emotional Support",
     },
     {

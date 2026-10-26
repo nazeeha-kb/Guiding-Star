@@ -75,7 +75,7 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
               She now works with young adults and women, who are in the middle of
               personal development, relationship challenges, and life
               transitions. She has coached through renowned companies like BetterUp, My Muslim Mentors and currently works
-              at Khidma, TaskHuman, and Mindtales.
+              at Khidma.live.
             </p>
           </div>
 

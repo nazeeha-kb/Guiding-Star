@@ -128,7 +128,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
                   <span className="min-w-0">
                     <span className="block text-sm text-[#5F7780]">Email</span>
                     <span className="block break-words text-base text-[#1F3A44] transition-colors group-hover:text-[#3E8A99]">
-                      hello@guidingstarcoaching.com
+                      bewithguidingstar21@gmail.com
                     </span>
                   </span>
                 </a>
