@@ -15,10 +15,6 @@ import {
   ink #1F3A44 · muted #5F7780 · accent #3E8A99 · tint #E3F0F2 · blush #EBAE95
 */
 
-interface ContactProps {
-  onOpenBooking: () => void;
-}
-
 const SOCIALS: { label: string; url: string; icon: LucideIcon }[] = [
   {
     label: "Instagram: Be with the Change",
@@ -45,7 +41,7 @@ const SOCIALS: { label: string; url: string; icon: LucideIcon }[] = [
 const inputClass =
   "w-full rounded-none border border-[#1F3A44]/20 bg-white px-4 py-3 text-base text-[#1F3A44] placeholder:text-[#5F7780]/60 transition-colors focus:border-[#3E8A99] focus:outline-none focus:ring-1 focus:ring-[#3E8A99]";
 
-export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
+export const Contact: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -99,13 +95,6 @@ export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
             You do not need prepared answers. A twenty-minute call is enough to
             begin.
           </p>
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="mt-8 bg-[#1F3A44] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99]"
-          >
-            Book a Discovery Call
-          </button>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 lg:mt-20 lg:grid-cols-12 lg:gap-16">

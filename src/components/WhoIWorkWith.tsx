@@ -5,10 +5,6 @@ import React from "react";
   ink #1F3A44 · muted #5F7780 · accent #3E8A99 · tint #F3F9FA · hairline = ink at 15%
 */
 
-interface WhoIWorkWithProps {
-  onOpenBooking: () => void;
-}
-
 const groups = [
   {
     title: "Personal",
@@ -27,9 +23,7 @@ const groups = [
   },
 ];
 
-export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({
-  onOpenBooking,
-}) => {
+export const WhoIWorkWith: React.FC = () => {
   return (
     <section
       id="who-this-is-for"
@@ -85,13 +79,6 @@ export const WhoIWorkWith: React.FC<WhoIWorkWithProps> = ({
             ))}
           </ul>
 
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="mt-10 w-full bg-[#1F3A44] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3E8A99] sm:w-auto"
-          >
-            Book a Discovery Call
-          </button>
         </div>
       </div>
     </section>

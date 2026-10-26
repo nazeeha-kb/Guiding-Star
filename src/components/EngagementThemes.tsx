@@ -1,11 +1,6 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 
-interface EngagementThemesProps {
-  onOpenBooking?: () => void;
-}
-
-export const EngagementThemes: React.FC<EngagementThemesProps> = ({ onOpenBooking }) => {
+export const EngagementThemes: React.FC = () => {
   const themes = [
     {
       title: 'Career Uncertainty',
@@ -93,32 +88,6 @@ export const EngagementThemes: React.FC<EngagementThemesProps> = ({ onOpenBookin
             </div>
           ))}
 
-          {/* Discovery Card */}
-          <div className="p-7 bg-[#EEF6F7] border border-[#DCE9EB] flex flex-col justify-between">
-            <div>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-[#183238] block mb-3">
-                First Step
-              </span>
-              <h3 className="font-serif text-2xl font-normal text-[#183238] mb-2">
-                Unsure where your situation fits?
-              </h3>
-              <p className="text-xs text-[#607277] leading-relaxed">
-                You do not need to diagnose or label your challenge before booking. A brief discovery call determines whether coaching is the appropriate next step.
-              </p>
-            </div>
-
-            {onOpenBooking && (
-              <div className="pt-4 mt-6 border-t border-[#DCE9EB]">
-                <button
-                  onClick={onOpenBooking}
-                  className="w-full py-2.5 px-4 text-center text-xs font-medium text-white bg-[#5797A6] hover:bg-[#467d8a] rounded-[4px] transition-colors flex items-center justify-center gap-2"
-                >
-                  <span>Book a Discovery Call</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Discretion Note */}

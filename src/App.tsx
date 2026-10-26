@@ -42,11 +42,11 @@ export default function App() {
         </RevealOnScroll>
         
         <RevealOnScroll>
-          <About onOpenBooking={handleOpenBooking} />
+          <About />
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <WhoIWorkWith onOpenBooking={handleOpenBooking} />
+          <WhoIWorkWith />
         </RevealOnScroll>
 
         <RevealOnScroll>
@@ -54,7 +54,7 @@ export default function App() {
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <Offerings onOpenBooking={handleOpenBooking} />
+          <Offerings />
         </RevealOnScroll>
 
         <RevealOnScroll>
@@ -70,7 +70,7 @@ export default function App() {
         </RevealOnScroll>
 
         <RevealOnScroll>
-          <Contact onOpenBooking={handleOpenBooking} />
+          <Contact />
         </RevealOnScroll>
       </main>
 

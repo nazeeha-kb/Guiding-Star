@@ -6,13 +6,9 @@ import React from "react";
   Background uses your existing `bg-mist` token, same blue as the Approach section.
 */
 
-interface AboutProps {
-  onOpenBooking: () => void;
-}
-
 const ICF_LOGO = "/ICF-logo.png";
 
-export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
+export const About: React.FC = () => {
   return (
     <section
       id="about"
@@ -89,13 +85,6 @@ export const About: React.FC<AboutProps> = ({ onOpenBooking }) => {
             <footer className="mt-3 text-sm text-[#5F7780]">Jodi Picoult</footer>
           </blockquote>
 
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="mt-12 w-full bg-[#1F3A44] px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3E8A99] sm:w-auto"
-          >
-            Book a Discovery Call
-          </button>
         </div>
       </div>
     </section>

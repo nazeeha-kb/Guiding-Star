@@ -7,10 +7,6 @@ import { Compass, Heart, Sprout, type LucideIcon } from "lucide-react";
   tint #E3F0F2 · wash #F3F9FA · hairline = ink at 15%
 */
 
-interface OfferingsProps {
-  onOpenBooking: () => void;
-}
-
 interface FocusGroup {
   label: string;
   icon: LucideIcon;
@@ -68,7 +64,7 @@ const groups: FocusGroup[] = [
   },
 ];
 
-export const Offerings: React.FC<OfferingsProps> = ({ onOpenBooking }) => {
+export const Offerings: React.FC = () => {
   return (
     <section
       id="offerings"
@@ -128,25 +124,6 @@ export const Offerings: React.FC<OfferingsProps> = ({ onOpenBooking }) => {
           })}
         </div>
 
-        {/* Booking */}
-        <div className="mt-10 grid gap-7 border-t-2 border-t-[#3E8A99] bg-[#1F3A44] px-6 py-9 text-white sm:px-10 md:mt-14 md:grid-cols-[1fr_auto] md:items-center md:gap-12 md:px-14 md:py-12">
-          <div>
-            <p className="max-w-[24ch] font-serif text-[1.65rem] font-normal leading-[1.15] sm:text-[2.1rem]">
-              Not sure where your question fits?
-            </p>
-            <p className="mt-4 max-w-[44ch] text-base leading-[1.7] text-white/75">
-              A discovery call is twenty minutes. If we continue, we decide the
-              shape of the work together.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onOpenBooking}
-            className="w-full bg-white px-7 py-3.5 text-sm font-medium tracking-wide text-[#1F3A44] transition-colors hover:bg-[#BFE0E6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:w-auto"
-          >
-            Book a Discovery Call
-          </button>
-        </div>
       </div>
     </section>
   );

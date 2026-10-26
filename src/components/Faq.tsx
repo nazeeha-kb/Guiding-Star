@@ -91,15 +91,9 @@ const AskCard: React.FC<{ className?: string }> = ({ className = "" }) => (
       Can&rsquo;t find your question?
     </p>
     <p className="mt-2.5 text-[0.95rem] leading-[1.7] text-[#5F7780]">
-      Bring it to the discovery call. It is a twenty-minute, no-pressure
-      conversation to see if we are a good fit.
+      Reach out through the contact section if your question is not covered
+      here.
     </p>
-    <a
-      href="#contact"
-      className="mt-6 inline-flex w-full items-center justify-center bg-[#1F3A44] px-6 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-[#3E8A99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3E8A99] sm:w-auto"
-    >
-      Book a discovery call
-    </a>
   </div>
 );
 
